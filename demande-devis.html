@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devis gratuit — Pompe à chaleur, Isolation &amp; Panneaux solaires</title>
+<meta name="description" content="Demandez votre devis gratuit et sans engagement pour votre projet de pompe à chaleur, isolation ou panneaux solaires. Réponse d'un artisan qualifié sous 24h.">
+<meta name="robots" content="noindex, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/lead-form.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+<!-- Header minimal : on évite de distraire un visiteur venu d'une pub -->
+<header class="lp-header">
+  <div class="container lp-header-inner">
+    <a href="index.html" class="logo">Lead<span>Rénov</span><span class="logo-dot">'</span></a>
+    <span class="lp-trust">🔒 100% gratuit &amp; sans engagement</span>
+  </div>
+</header>
+
+<section class="lp-hero">
+  <div class="container lp-hero-inner">
+    <div class="lp-hero-text">
+      <p class="eyebrow">Aides de l'État jusqu'à 90%</p>
+      <h1>Obtenez votre devis gratuit en 2 minutes</h1>
+      <p class="lp-sub">
+        Pompe à chaleur, isolation ou panneaux solaires : un artisan RGE qualifié
+        de votre région vous recontacte sous 24h pour étudier votre projet et
+        vos aides disponibles (MaPrimeRénov', CEE...).
+      </p>
+      <ul class="lp-points">
+        <li>✓ Artisans certifiés RGE près de chez vous</li>
+        <li>✓ Étude gratuite de vos aides financières</li>
+        <li>✓ Aucun engagement, aucun frais</li>
+      </ul>
+    </div>
+
+    <div class="lp-form-card">
+      <div class="lp-progress">
+        <div class="lp-progress-bar" id="lpProgressBar"></div>
+      </div>
+
+      <form id="leadCaptureForm" novalidate>
+
+        <!-- Étape 1 : projet -->
+        <div class="lp-step active" data-step="1">
+          <h2>Quel est votre projet ?</h2>
+          <div class="lp-choice-grid">
+            <label class="lp-choice">
+              <input type="radio" name="projet" value="Pompe à chaleur" required>
+              <span class="lp-choice-icon">🔥</span>
+              <span>Pompe à chaleur</span>
+            </label>
+            <label class="lp-choice">
+              <input type="radio" name="projet" value="Isolation">
+              <span class="lp-choice-icon">🧱</span>
+              <span>Isolation</span>
+            </label>
+            <label class="lp-choice">
+              <input type="radio" name="projet" value="Panneaux solaires">
+              <span class="lp-choice-icon">☀️</span>
+              <span>Panneaux solaires</span>
+            </label>
+          </div>
+          <button type="button" class="btn btn-primary btn-full lp-next">Continuer</button>
+        </div>
+
+        <!-- Étape 2 : logement -->
+        <div class="lp-step" data-step="2">
+          <h2>Votre logement</h2>
+          <div class="form-group">
+            <label>Vous êtes</label>
+            <div class="lp-radio-row">
+              <label class="lp-radio"><input type="radio" name="statut" value="Propriétaire" required> Propriétaire</label>
+              <label class="lp-radio"><input type="radio" name="statut" value="Locataire"> Locataire</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Type de logement</label>
+            <div class="lp-radio-row">
+              <label class="lp-radio"><input type="radio" name="logement" value="Maison" required> Maison</label>
+              <label class="lp-radio"><input type="radio" name="logement" value="Appartement"> Appartement</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="codePostal">Code postal</label>
+            <input type="text" id="codePostal" name="codePostal" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" required placeholder="75001">
+          </div>
+          <div class="lp-btn-row">
+            <button type="button" class="btn btn-ghost lp-prev">Retour</button>
+            <button type="button" class="btn btn-primary lp-next">Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : délai / budget -->
+        <div class="lp-step" data-step="3">
+          <h2>Votre projet</h2>
+          <div class="form-group">
+            <label for="delai">Sous quel délai souhaitez-vous réaliser ce projet ?</label>
+            <select id="delai" name="delai" required>
+              <option value="">Choisir un délai</option>
+              <option value="Dès que possible">Dès que possible</option>
+              <option value="1 à 3 mois">1 à 3 mois</option>
+              <option value="3 à 6 mois">3 à 6 mois</option>
+              <option value="Je me renseigne">Je me renseigne</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="budget">Budget envisagé (optionnel)</label>
+            <select id="budget" name="budget">
+              <option value="">Non défini</option>
+              <option value="Moins de 5 000 €">Moins de 5 000 €</option>
+              <option value="5 000 à 10 000 €">5 000 à 10 000 €</option>
+              <option value="10 000 à 20 000 €">10 000 à 20 000 €</option>
+              <option value="Plus de 20 000 €">Plus de 20 000 €</option>
+            </select>
+          </div>
+          <div class="lp-btn-row">
+            <button type="button" class="btn btn-ghost lp-prev">Retour</button>
+            <button type="button" class="btn btn-primary lp-next">Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : coordonnées -->
+        <div class="lp-step" data-step="4">
+          <h2>Vos coordonnées</h2>
+          <p class="lp-step-sub">Pour recevoir votre devis gratuit et être recontacté par un artisan qualifié.</p>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" required placeholder="Marie">
+            </div>
+            <div class="form-group">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" required placeholder="Dubois">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" required placeholder="06 12 34 56 78">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="vous@exemple.fr">
+          </div>
+          <div class="form-group lp-consent">
+            <label class="lp-checkbox">
+              <input type="checkbox" id="consent" name="consent" required>
+              <span>J'accepte d'être recontacté(e) par LeadRénov' et un artisan partenaire au sujet de mon projet. Voir notre <a href="#" target="_blank" rel="noopener">politique de confidentialité</a>.</span>
+            </label>
+          </div>
+          <input type="hidden" id="source" name="source" value="">
+          <input type="hidden" id="pageUrl" name="pageUrl" value="">
+          <div class="lp-btn-row">
+            <button type="button" class="btn btn-ghost lp-prev">Retour</button>
+            <button type="submit" class="btn btn-primary">Recevoir mon devis gratuit</button>
+          </div>
+        </div>
+
+        <!-- Confirmation -->
+        <div class="lp-step" data-step="5">
+          <div class="lp-success">
+            <div class="lp-success-icon">✅</div>
+            <h2>Merci, votre demande est bien reçue !</h2>
+            <p id="lpSuccessMsg">Un artisan qualifié de votre région va vous recontacter sous 24h ouvrées.</p>
+          </div>
+        </div>
+
+        <p class="form-note" id="formNote" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="lp-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> LeadRénov'. Vos données sont utilisées uniquement pour vous mettre en relation avec un artisan qualifié.</p>
+  </div>
+</footer>
+
+<script src="js/lead-form.js"></script>
+</body>
+</html>
