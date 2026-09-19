@@ -1,8 +1,4 @@
-// ==========================================================================
-// Configuration : coller ici l'URL de votre Web App Google Apps Script
-// (voir apps-script/Code.gs et le README pour la procédure de déploiement)
-// ==========================================================================
-const LEAD_ENDPOINT_URL = 'REMPLACER_PAR_VOTRE_URL_WEB_APP';
+// Config partagée (LEAD_ENDPOINT_URL) chargée depuis js/config.js
 
 const form = document.getElementById('leadCaptureForm');
 const steps = Array.from(document.querySelectorAll('.lp-step'));

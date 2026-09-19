@@ -75,11 +75,12 @@ revealTargets.forEach((el) => {
   revealObserver.observe(el);
 });
 
-// Formulaire de contact (simulation d'envoi, pas de backend)
+// Formulaire de contact artisans — envoi vers le même backend Google Sheets
+// que le formulaire de capture de leads (voir js/config.js et apps-script/Code.gs)
 const form = document.getElementById('leadForm');
 const formNote = document.getElementById('formNote');
 
-form?.addEventListener('submit', (e) => {
+form?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
@@ -101,12 +102,42 @@ form?.addEventListener('submit', (e) => {
     return;
   }
 
-  // Pas de backend connecté : on simule la confirmation.
-  // Pour connecter un vrai envoi, remplacer ce bloc par un fetch()
-  // vers votre API ou service de formulaire (ex: Formspree, EmailJS...).
-  formNote.textContent = `Merci ${nom} ! Votre demande a bien été enregistrée, nous revenons vers vous sous 24h ouvrées.`;
-  formNote.className = 'form-note success';
-  form.reset();
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Envoi en cours...';
+
+  const payload = new URLSearchParams();
+  data.forEach((value, key) => payload.append(key, value.toString()));
+  payload.append('dateSoumission', new Date().toISOString());
+
+  try {
+    if (typeof LEAD_ENDPOINT_URL === 'undefined' || LEAD_ENDPOINT_URL.includes('REMPLACER_PAR_VOTRE_URL_WEB_APP')) {
+      throw new Error('endpoint-not-configured');
+    }
+
+    // mode 'no-cors' : Google Apps Script ne renvoie pas d'en-têtes CORS,
+    // la requête part bien mais la réponse n'est pas lisible ici.
+    await fetch(LEAD_ENDPOINT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: payload.toString(),
+    });
+
+    formNote.textContent = `Merci ${nom} ! Votre demande a bien été enregistrée, nous revenons vers vous sous 24h ouvrées.`;
+    formNote.className = 'form-note success';
+    form.reset();
+  } catch (err) {
+    if (err.message === 'endpoint-not-configured') {
+      formNote.textContent = "Configuration en attente : ajoutez votre URL Google Apps Script dans js/config.js (voir README).";
+    } else {
+      formNote.textContent = 'Une erreur est survenue. Merci de réessayer ou de nous contacter directement.';
+    }
+    formNote.className = 'form-note error';
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Envoyer ma demande';
+  }
 });
 
 // Année dynamique dans le footer
