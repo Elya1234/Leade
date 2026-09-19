@@ -1,0 +1,59 @@
+.ec-section { padding: 60px 0 100px; min-height: 60vh; }
+
+.ec-login { display: flex; justify-content: center; padding-top: 40px; }
+.ec-login-card {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  padding: 40px 36px;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+}
+.ec-login-card h1 { font-size: 1.5rem; margin-bottom: 10px; }
+.ec-login-card p { color: var(--muted); margin-bottom: 24px; font-size: 0.95rem; }
+.ec-login-card .form-group { text-align: left; margin-bottom: 20px; }
+
+.ec-dashboard-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.ec-dashboard-head h1 { font-size: 1.8rem; }
+
+.ec-status { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; }
+
+.ec-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+
+.ec-card {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+.ec-card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.ec-card-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(255, 107, 53, 0.12);
+  color: var(--orange-dark);
+}
+.ec-card-date { font-size: 0.78rem; color: var(--muted); }
+.ec-card h3 { font-size: 1.15rem; margin-bottom: 12px; }
+.ec-card-row { display: flex; justify-content: space-between; padding: 6px 0; font-size: 0.9rem; border-bottom: 1px solid var(--border); }
+.ec-card-row:last-child { border: none; }
+.ec-card-row span:first-child { color: var(--muted); }
+.ec-card-row span:last-child { font-weight: 600; color: var(--navy); text-align: right; }
+.ec-card-contact { margin-top: 14px; display: flex; gap: 10px; }
+.ec-card-contact a { flex: 1; text-align: center; padding: 10px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
+.ec-card-contact .call { background: var(--navy); color: #fff; }
+.ec-card-contact .mail { background: #fff; border: 1px solid var(--border); color: var(--navy); }
+
+.ec-empty { text-align: center; color: var(--muted); padding: 40px 0; }

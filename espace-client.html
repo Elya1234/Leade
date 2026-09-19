@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Espace client — LeadRénov'</title>
+<meta name="description" content="Consultez les leads qui vous ont été attribués.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/espace-client.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+<header class="lp-header">
+  <div class="container lp-header-inner">
+    <a href="index.html" class="logo">Lead<span>Rénov</span><span class="logo-dot">'</span></a>
+    <span class="lp-trust">🔒 Espace privé</span>
+  </div>
+</header>
+
+<section class="ec-section">
+  <div class="container">
+
+    <!-- Écran de connexion (si pas de code dans l'URL) -->
+    <div class="ec-login" id="ecLogin">
+      <div class="ec-login-card">
+        <h1>Accéder à mes leads</h1>
+        <p>Saisissez le code d'accès qui vous a été communiqué par LeadRénov'.</p>
+        <form id="ecLoginForm">
+          <div class="form-group">
+            <label for="ecCode">Code d'accès</label>
+            <input type="text" id="ecCode" name="ecCode" required placeholder="Ex: MARTIN2024" autocomplete="off">
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Voir mes leads</button>
+        </form>
+        <p class="form-note" id="ecLoginNote" role="status"></p>
+      </div>
+    </div>
+
+    <!-- Tableau de bord (une fois le code validé) -->
+    <div class="ec-dashboard" id="ecDashboard" hidden>
+      <div class="ec-dashboard-head">
+        <div>
+          <p class="eyebrow">Espace client</p>
+          <h1 id="ecTitle">Vos leads</h1>
+        </div>
+        <a href="espace-client.html" class="btn btn-ghost">Changer de code</a>
+      </div>
+
+      <div class="ec-status" id="ecStatus"></div>
+
+      <div class="ec-grid" id="ecGrid"></div>
+
+      <p class="ec-empty" id="ecEmpty" hidden>Aucun lead ne vous a encore été attribué. Revenez bientôt !</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="lp-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> LeadRénov'. Espace réservé à nos artisans partenaires.</p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/espace-client.js"></script>
+</body>
+</html>

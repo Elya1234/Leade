@@ -2,25 +2,29 @@
 
 Site statique (HTML/CSS/JS, sans dépendances) pour une activité de vente de leads qualifiés destinés aux artisans RGE dans trois secteurs : **pompes à chaleur**, **isolation thermique** et **panneaux solaires**.
 
-Le projet contient deux briques complémentaires, connectées au **même backend** :
+Le projet contient trois briques complémentaires, connectées au **même backend** :
 
 1. **`index.html`** — le site vitrine B2B : il présente votre offre aux **artisans** qui achètent des leads chez vous. Le formulaire de contact enregistre leur demande.
 2. **`demande-devis.html`** — la page de **capture de leads** : c'est ici que les **particuliers** (via vos campagnes pub, Google/Facebook Ads, etc.) déposent leur demande de devis. Chaque soumission devient un lead que vous pourrez ensuite revendre à vos contacts artisans.
+3. **`espace-client.html`** — l'**espace client artisans** : une fois qu'un lead est vendu à un artisan, il peut consulter ses leads attribués (coordonnées du particulier, projet, délai...) via un simple code d'accès personnel, sans avoir à lui envoyer de fichier manuellement.
 
 ## Structure
 
 ```
-├── index.html            # Site vitrine B2B (présentation, tarifs, contact artisans)
-├── demande-devis.html    # Landing page de capture de leads (particuliers)
+├── index.html              # Site vitrine B2B (présentation, tarifs, contact artisans)
+├── demande-devis.html      # Landing page de capture de leads (particuliers)
+├── espace-client.html      # Espace client artisans (consultation des leads attribués)
 ├── css/
-│   ├── style.css         # Styles communs (design, variables CSS)
-│   └── lead-form.css     # Styles du formulaire multi-étapes de capture de lead
+│   ├── style.css           # Styles communs (design, variables CSS)
+│   ├── lead-form.css       # Styles du formulaire multi-étapes de capture de lead
+│   └── espace-client.css   # Styles de l'espace client
 ├── js/
-│   ├── config.js          # URL du backend Google Sheets, partagée par les 2 formulaires
-│   ├── script.js          # Comportements du site vitrine (menu, compteurs, formulaire contact artisans)
-│   └── lead-form.js       # Logique du formulaire de capture de leads (multi-étapes)
+│   ├── config.js           # URL du backend Google Sheets, partagée par toutes les pages
+│   ├── script.js           # Comportements du site vitrine (menu, compteurs, formulaire contact artisans)
+│   ├── lead-form.js        # Logique du formulaire de capture de leads (multi-étapes)
+│   └── espace-client.js    # Connexion par code + affichage des leads attribués
 ├── apps-script/
-│   └── Code.gs             # Backend "no-code" (Google Apps Script) : stockage + notification email
+│   └── Code.gs              # Backend "no-code" (Google Apps Script) : stockage, notifications, espace client
 └── img/
 ```
 
@@ -67,6 +71,7 @@ Pour chaque soumission, vous recevez :
 6. **Tester**
    - Ouvrez `demande-devis.html`, remplissez le formulaire. Vous devez recevoir un email et voir une nouvelle ligne dans l'onglet `Leads`.
    - Ouvrez `index.html`, remplissez le formulaire de contact (section « Demandez vos premiers leads »). Vous devez recevoir un email et voir une nouvelle ligne dans l'onglet `ContactsArtisans`.
+   - Dans l'onglet `Leads`, remplissez la colonne `codeArtisan` d'une ligne de test avec un code (ex: `TEST123`), puis ouvrez `espace-client.html?code=TEST123` : le lead doit s'afficher.
 
 > ⚠️ Si vous modifiez `Code.gs` plus tard, il faut créer un **nouveau déploiement** (ou gérer les déploiements existants) dans Apps Script pour que les changements soient pris en compte par l'URL publiée.
 
@@ -80,6 +85,20 @@ L'onglet `Leads` du Google Sheet contient deux colonnes prévues à cet effet :
 Pour préparer un envoi à un contact : filtrez le Sheet par secteur (`projet`) et zone (`codePostal`), sélectionnez les lignes concernées, puis `Fichier` → `Télécharger` → `Valeurs séparées par une virgule (.csv)` pour obtenir un fichier prêt à transmettre.
 
 L'onglet `ContactsArtisans` vous permet de son côté de suivre les artisans intéressés par vos leads (colonne `etat` : `Nouveau` / `Recontacté` / `Client`), pour savoir à qui proposer vos prochains leads en priorité.
+
+### Espace client artisans (`espace-client.html`)
+
+Plutôt que d'exporter un CSV à chaque vente, chaque artisan peut consulter directement ses leads dans un espace privé.
+
+**Attribuer un lead à un artisan :**
+
+1. Choisissez ou créez un **code d'accès** pour cet artisan (ex: `MARTIN2024`) — vous pouvez le noter dans la colonne `codeArtisan` de l'onglet `ContactsArtisans` pour vous en souvenir.
+2. Dans l'onglet `Leads`, sur la ligne du lead vendu, renseignez ce même code dans la colonne `codeArtisan` (et mettez à jour `etat` → `Vendu`, `venduA` → nom de l'artisan).
+3. Envoyez à l'artisan son lien personnel : `https://votresite.fr/espace-client.html?code=MARTIN2024`. Il retrouvera automatiquement tous les leads qui lui ont été attribués (coordonnées incluses), avec un bouton pour appeler ou envoyer un email directement.
+
+Sans paramètre `code` dans l'URL, la page affiche un écran de connexion où l'artisan peut saisir son code manuellement.
+
+> ⚠️ Ce système repose sur un code d'accès simple (pas de mot de passe individuel, pas de compte utilisateur) : c'est volontairement léger pour rester "no-code". Toute personne connaissant le code d'un artisan peut voir ses leads — pensez à générer des codes non devinables (ex: `MARTIN-7F2K9`) plutôt que des noms simples si vous voulez plus de discrétion.
 
 ### Suivre l'origine de vos leads (campagnes publicitaires)
 

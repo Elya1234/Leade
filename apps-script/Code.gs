@@ -27,8 +27,9 @@ const LEAD_COLUMNS = [
   'email',
   'source',
   'pageUrl',
-  'etat',     // à remplir manuellement : Nouveau / Contacté / Vendu
-  'venduA',   // à remplir manuellement : nom du contact/artisan à qui le lead a été revendu
+  'etat',        // à remplir manuellement : Nouveau / Contacté / Vendu
+  'venduA',      // à remplir manuellement : nom du contact/artisan à qui le lead a été revendu
+  'codeArtisan', // à remplir manuellement : code d'accès de l'artisan (voir onglet ContactsArtisans), pour l'espace client
 ];
 
 // Colonnes d'une demande d'artisan (formulaire de contact de index.html).
@@ -42,7 +43,8 @@ const ARTISAN_COLUMNS = [
   'secteur',
   'zone',
   'message',
-  'etat', // à remplir manuellement : Nouveau / Recontacté / Client
+  'etat',        // à remplir manuellement : Nouveau / Recontacté / Client
+  'codeArtisan', // à remplir manuellement : code d'accès unique à donner à cet artisan pour son espace client
 ];
 
 function doPost(e) {
@@ -60,6 +62,53 @@ function doPost(e) {
   return ContentService
     .createTextOutput(JSON.stringify({ status: 'ok' }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Espace client artisan : renvoie (en JSONP) les leads dont la colonne
+ * `codeArtisan` correspond au code fourni en paramètre `code`.
+ * Appelé depuis espace-client.html via une balise <script> (JSONP), car les
+ * requêtes GET cross-origin vers Apps Script ne supportent pas le CORS classique.
+ */
+function doGet(e) {
+  const code = (e.parameter.code || '').trim();
+  const callback = e.parameter.callback;
+  let payload;
+
+  if (!code) {
+    payload = { status: 'error', message: 'Code manquant.' };
+  } else {
+    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(LEAD_SHEET_NAME);
+    const leads = [];
+
+    if (sheet && sheet.getLastRow() > 1) {
+      const values = sheet.getRange(2, 1, sheet.getLastRow() - 1, LEAD_COLUMNS.length).getValues();
+      const codeIndex = LEAD_COLUMNS.indexOf('codeArtisan');
+
+      values.forEach((row) => {
+        if (String(row[codeIndex]).trim() === code) {
+          const lead = {};
+          LEAD_COLUMNS.forEach((col, i) => {
+            if (col === 'codeArtisan') return; // pas besoin de renvoyer le code lui-même
+            lead[col] = row[i];
+          });
+          leads.push(lead);
+        }
+      });
+    }
+
+    payload = { status: 'ok', leads: leads };
+  }
+
+  const json = JSON.stringify(payload);
+
+  if (callback) {
+    return ContentService
+      .createTextOutput(`${callback}(${json})`)
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+
+  return ContentService.createTextOutput(json).setMimeType(ContentService.MimeType.JSON);
 }
 
 function appendRow(sheetName, columns, data) {
