@@ -14,6 +14,18 @@
       if (m && m[1]) el.innerHTML = '<span class="rr-a">' + m[1] + '</span><span class="rr-b">' + m[2] + '</span>';
     });
 
+    /* Titre en dégradé : un seul bloc de texte (Safari n'affiche pas les éléments imbriqués) */
+    $$('.hero h1>span').forEach(function (sp) { sp.textContent = sp.textContent; });
+
+    /* Fenêtres légales : compatibilité anciens iPhone (iOS < 15.4) */
+    $$('dialog').forEach(function (d) {
+      if (typeof d.showModal === 'function') return;
+      d.classList.add('rr-poly');
+      var voile = null;
+      d.showModal = function () { d.setAttribute('open', ''); voile = document.createElement('div'); voile.className = 'rr-voile'; voile.onclick = function () { d.close(); }; document.body.appendChild(voile); };
+      d.close = function () { d.removeAttribute('open'); if (voile) { voile.remove(); voile = null; } };
+    });
+
     /* Barre de lecture + en-tête resserré */
     var prog = document.createElement('div'); prog.className = 'rr-prog'; document.body.appendChild(prog);
     var header = $('header.top');

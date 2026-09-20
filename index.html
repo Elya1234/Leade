@@ -300,7 +300,7 @@ dialog .fermer{background:#fff;border-top:1px solid var(--bord);padding:12px 28p
   <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
 </svg>
 
-<div class="infobar"><b>Service 100 % gratuit</b> pour les particuliers · Sans engagement · Réponse sous 48 h ouvrées</div>
+<div class="infobar"><b>100 % gratuit</b><span class="long"> pour les particuliers</span> · Sans engagement<span class="long"> · Réponse sous 48 h ouvrées</span></div>
 <header class="top">
   <div class="wrap">
     <a class="logo" href="#">
@@ -687,7 +687,9 @@ document.querySelectorAll('.nb-pros').forEach(e => e.textContent = NB_PROS);
 document.querySelectorAll('.nom-marque').forEach(e => e.textContent = NOM_MARQUE);
 document.getElementById('annee').textContent = new Date().getFullYear();
 const modeDemo = !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
-if (modeDemo) document.getElementById('bandeau-demo').style.display = 'block';
+// Le bandeau n'apparaît qu'en aperçu local (fichier ouvert sur l'ordinateur) ou avec ?demo dans l'adresse, jamais pour les visiteurs
+if (modeDemo && (location.protocol === 'file:' || /[?&]demo/.test(location.search))) document.getElementById('bandeau-demo').style.display = 'block';
+if (modeDemo) console.warn('RenovRenta : SCRIPT_URL non renseigné dans config.js — les demandes ne sont pas enregistrées.');
 
 const ico = n => `<svg class="i"><use href="#i-${n}"/></svg>`;
 const tuiles = document.getElementById('tuiles-travaux');

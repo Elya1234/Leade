@@ -352,7 +352,9 @@ dialog h3{font-size:1rem;margin:18px 0 6px}dialog .fermer{border-top:1px solid v
 const CFG = window.RENOVRENTA || {};
 const SCRIPT_URL = CFG.SCRIPT_URL || '';
 const modeDemo = !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
-if (modeDemo) document.getElementById('bandeau-demo').style.display = 'block';
+// Le bandeau n'apparaît qu'en aperçu local (fichier ouvert sur l'ordinateur) ou avec ?demo dans l'adresse, jamais pour les visiteurs
+if (modeDemo && (location.protocol === 'file:' || /[?&]demo/.test(location.search))) document.getElementById('bandeau-demo').style.display = 'block';
+if (modeDemo) console.warn('RenovRenta : SCRIPT_URL non renseigné dans config.js — les demandes ne sont pas enregistrées.');
 
 const METIERS = ['Pompe à chaleur', 'Chauffage', 'Isolation', 'Panneaux solaires', 'Fenêtres / menuiseries', 'Toiture', 'Salle de bain / cuisine', 'Rénovation globale'];
 document.getElementById('pills-metiers').innerHTML = METIERS.map((m, i) =>
