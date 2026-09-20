@@ -317,7 +317,7 @@ dialog .fermer{background:#fff;border-top:1px solid var(--bord);padding:12px 28p
     </nav>
   </div>
 </header>
-<div class="demo" id="bandeau-demo">Mode démonstration : le formulaire n'est pas encore relié à Google Sheets (SCRIPT_URL).</div>
+<div class="demo" id="bandeau-demo">Mode démonstration : aucune destination configurée dans config.js (SCRIPT_URL ou EMAIL_LEADS).</div>
 
 <main>
 <div class="hero" id="hero">
@@ -644,7 +644,7 @@ dialog .fermer{background:#fff;border-top:1px solid var(--bord);padding:12px 28p
     <p>Pour traiter votre demande, vous recontacter si besoin afin de la préciser, et la transmettre à des professionnels du bâtiment susceptibles de réaliser vos travaux. Base légale : votre consentement, donné en cochant la case du formulaire.</p>
     <h3>Qui reçoit vos données ?</h3>
     <p><span class="nb-pros">3</span> professionnels du bâtiment au maximum (artisans et entreprises de rénovation) intervenant dans votre zone et pour le type de travaux demandé. Vos données ne sont pas vendues à d'autres fins ni utilisées pour d'autres offres commerciales.</p>
-    <p>Prestataires techniques : Google (stockage du tableur ; clauses contractuelles types de la Commission européenne pour les éventuels transferts hors UE) et GitHub (hébergement du site).</p>
+    <p>Prestataires techniques : Google (stockage du tableur ; clauses contractuelles types de la Commission européenne pour les éventuels transferts hors UE) GitHub (hébergement du site) et FormSubmit (transmission de votre demande par email à notre équipe).</p>
     <h3>Combien de temps ?</h3>
     <p>3 ans au maximum à compter de notre dernier échange, puis suppression.</p>
     <h3>Vos droits</h3>
@@ -686,10 +686,10 @@ document.getElementById('final').style.setProperty('--photo', PH('photo-15805877
 document.querySelectorAll('.nb-pros').forEach(e => e.textContent = NB_PROS);
 document.querySelectorAll('.nom-marque').forEach(e => e.textContent = NOM_MARQUE);
 document.getElementById('annee').textContent = new Date().getFullYear();
-const modeDemo = !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
+const modeDemo = !(window.rrPret && window.rrPret());
 // Le bandeau n'apparaît qu'en aperçu local (fichier ouvert sur l'ordinateur) ou avec ?demo dans l'adresse, jamais pour les visiteurs
 if (modeDemo && (location.protocol === 'file:' || /[?&]demo/.test(location.search))) document.getElementById('bandeau-demo').style.display = 'block';
-if (modeDemo) console.warn('RenovRenta : SCRIPT_URL non renseigné dans config.js — les demandes ne sont pas enregistrées.');
+if (modeDemo) console.warn('RenovRenta : ni SCRIPT_URL ni EMAIL_LEADS dans config.js — les demandes ne sont pas transmises.');
 
 const ico = n => `<svg class="i"><use href="#i-${n}"/></svg>`;
 const tuiles = document.getElementById('tuiles-travaux');
@@ -805,7 +805,7 @@ form.addEventListener('submit', async e => {
       errEnvoi.style.display = 'block'; reset(); return;
     }
     if (modeDemo) { console.warn('Mode démo – données non envoyées :', Object.fromEntries(p)); await new Promise(r => setTimeout(r, 600)); }
-    else await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: p });
+    else await window.rrEnvoyer(p);
     document.getElementById('merci-prenom').textContent = val('prenom');
     afficher(5);
     barre.classList.remove('on');

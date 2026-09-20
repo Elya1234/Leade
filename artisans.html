@@ -164,7 +164,7 @@ dialog h3{font-size:1rem;margin:18px 0 6px}dialog .fermer{border-top:1px solid v
     </nav>
   </div>
 </header>
-<div class="demo" id="bandeau-demo">Mode démonstration : le formulaire n'est pas encore relié à Google Sheets (config.js).</div>
+<div class="demo" id="bandeau-demo">Mode démonstration : aucune destination configurée dans config.js.</div>
 
 <main>
 <div class="hero">
@@ -341,7 +341,7 @@ dialog h3{font-size:1rem;margin:18px 0 6px}dialog .fermer{border-top:1px solid v
     <h3>Hébergement</h3>
     <p><span data-legal="hebergeur"></span>.</p>
     <h3>Données des professionnels</h3>
-    <p>Les informations envoyées via ce formulaire servent uniquement à vous recontacter au sujet de notre offre et à gérer la relation commerciale. Vous pouvez en demander l'accès, la rectification ou la suppression par email.</p>
+    <p>Les informations envoyées via ce formulaire servent uniquement à vous recontacter au sujet de notre offre et à gérer la relation commerciale. Elles nous sont transmises par email via FormSubmit et, le cas échéant, enregistrées dans Google Sheets. Vous pouvez en demander l'accès, la rectification ou la suppression par email.</p>
   </div>
   <div class="fermer"><button class="btn-go" style="width:auto;padding:11px 20px" data-fermer>Fermer</button></div>
 </dialog>
@@ -351,10 +351,10 @@ dialog h3{font-size:1rem;margin:18px 0 6px}dialog .fermer{border-top:1px solid v
 <script>
 const CFG = window.RENOVRENTA || {};
 const SCRIPT_URL = CFG.SCRIPT_URL || '';
-const modeDemo = !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
+const modeDemo = !(window.rrPret && window.rrPret());
 // Le bandeau n'apparaît qu'en aperçu local (fichier ouvert sur l'ordinateur) ou avec ?demo dans l'adresse, jamais pour les visiteurs
 if (modeDemo && (location.protocol === 'file:' || /[?&]demo/.test(location.search))) document.getElementById('bandeau-demo').style.display = 'block';
-if (modeDemo) console.warn('RenovRenta : SCRIPT_URL non renseigné dans config.js — les demandes ne sont pas enregistrées.');
+if (modeDemo) console.warn('RenovRenta : ni SCRIPT_URL ni EMAIL_LEADS dans config.js.');
 
 const METIERS = ['Pompe à chaleur', 'Chauffage', 'Isolation', 'Panneaux solaires', 'Fenêtres / menuiseries', 'Toiture', 'Salle de bain / cuisine', 'Rénovation globale'];
 document.getElementById('pills-metiers').innerHTML = METIERS.map((m, i) =>
@@ -396,7 +396,7 @@ form.addEventListener('submit', async e => {
   try {
     if (modeDemo && location.protocol !== 'file:') { err.textContent = 'Formulaire bientôt disponible. Écrivez-nous à ' + CFG.EMAIL + '.'; err.style.display = 'block'; btn.disabled = false; btn.textContent = 'Être rappelé'; return; }
     if (modeDemo) { console.warn('Démo', Object.fromEntries(p)); await new Promise(r => setTimeout(r, 500)); }
-    else await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: p });
+    else await window.rrEnvoyer(p);
     form.style.display = 'none'; document.getElementById('ok').style.display = 'block';
   } catch (x) {
     err.textContent = "L'envoi n'a pas fonctionné. Réessayez ou écrivez-nous à " + CFG.EMAIL + '.'; err.style.display = 'block';

@@ -6,12 +6,17 @@ window.RENOVRENTA = {
   // 1. Adresse du script Google (Apps Script > Déployer > Application Web), se termine par /exec
   SCRIPT_URL: 'COLLEZ_ICI_L_ADRESSE_DU_SCRIPT',
 
+  // 1 bis. Réception des leads par email (sans configuration) : chaque demande est envoyée
+  //        à cette adresse via FormSubmit. Mettre '' pour désactiver.
+  //        La toute première demande déclenche un email « Activate Form » : cliquez dessus une fois.
+  EMAIL_LEADS: 'renovrenta@gmail.com',
+
   // 2. Nombre maximum de professionnels à qui chaque demande est transmise
   NB_PROS: 3,
 
   // 3. Contact affiché sur le site
   NOM_MARQUE: "RenovRenta",
-  EMAIL: 'contact@renovrenta.fr',
+  EMAIL: 'renovrenta@gmail.com',
   TELEPHONE: '',              // ex. '01 84 00 00 00' — laisser vide pour ne pas afficher de numéro
 
   // 4. Société (mentions légales). Tant que le SIREN est vide, le site affiche
@@ -59,3 +64,39 @@ window.RENOVRENTA = {
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', remplir); else remplir();
 })();
+
+/* Envoi d'une demande : Google Sheets (si SCRIPT_URL est renseigné) et/ou email (EMAIL_LEADS) */
+window.rrPret = function () {
+  var C = window.RENOVRENTA;
+  return /^https:\/\/script\.google\.com\//.test(C.SCRIPT_URL) || !!C.EMAIL_LEADS;
+};
+window.rrEnvoyer = function (p) {
+  var C = window.RENOVRENTA, envois = [];
+  if (p.get('website')) return Promise.resolve();          // robot : on ignore
+  if (/^https:\/\/script\.google\.com\//.test(C.SCRIPT_URL)) {
+    envois.push(fetch(C.SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: p }));
+  }
+  if (C.EMAIL_LEADS) {
+    var noms = { type_travaux: 'Travaux', type_logement: 'Logement', statut_occupant: 'Statut', surface: 'Surface', delai: 'Délai',
+      budget: 'Budget', code_postal: 'Code postal', ville: 'Ville', description: 'Description', prenom: 'Prénom', nom: 'Nom',
+      telephone: 'Téléphone', consentement: 'Accord pour être recontacté', source: 'Source', entreprise: 'Entreprise',
+      contact: 'Contact', metiers: 'Métiers', departements: 'Départements', volume: 'Volume souhaité', siret: 'SIRET' };
+    var o = {}, pro = p.get('formulaire') === 'artisan';
+    o['Type de demande'] = pro ? 'ARTISAN intéressé (page pro)' : 'LEAD particulier';
+    o['Date'] = new Date().toLocaleString('fr-FR');
+    p.forEach(function (v, k) { if (v && k !== 'website' && k !== 'formulaire') o[noms[k] || k] = v; });
+    o._subject = pro ? 'Nouvel artisan : ' + (p.get('entreprise') || '') + ' (' + (p.get('departements') || '') + ')'
+                     : 'Nouveau lead ' + (p.get('type_travaux') || '') + ' – ' + (p.get('code_postal') || '') + ' ' + (p.get('ville') || '');
+    o._template = 'table';
+    o._captcha = 'false';
+    envois.push(fetch('https://formsubmit.co/ajax/' + C.EMAIL_LEADS, {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(o)
+    }).then(function (r) { if (!r.ok) throw new Error('Envoi email : ' + r.status); return r; }));
+  }
+  if (!envois.length) return Promise.reject(new Error('Aucune destination configurée'));
+  // Réussi dès qu'une des destinations a reçu la demande
+  return new Promise(function (ok, ko) {
+    var restant = envois.length, derniere;
+    envois.forEach(function (e) { e.then(ok, function (x) { derniere = x; if (--restant === 0) ko(derniere); }); });
+  });
+};

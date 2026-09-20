@@ -7,7 +7,7 @@
  * Seule ligne à modifier : EMAIL_NOTIFICATION (votre email, ou '' pour ne rien recevoir).
  */
 const CONFIG = {
-  EMAIL_NOTIFICATION: '',           // ex. 'vous@gmail.com'
+  EMAIL_NOTIFICATION: 'renovrenta@gmail.com',           // ex. 'vous@gmail.com'
   ONGLET_LEADS: 'Leads',
   ONGLET_FACTURES: 'Factures',
   ONGLET_ARTISANS: 'Artisans',

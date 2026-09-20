@@ -16,11 +16,16 @@ Ces fichiers remplacent l'ancien site du dépôt (index.html vitrine artisans, d
 supprimez ces anciens fichiers pour éviter les doublons.
 
 ## Mise en ligne
-0. Nom de domaine conseillé : renovrenta.fr (libre au 20/09/2026) pour l'email contact@renovrenta.fr.
+0. Nom de domaine conseillé : renovrenta.fr (libre au 20/09/2026) pour l'email renovrenta@gmail.com.
 1. Envoyer tous les fichiers à la racine de la branche `leade`.
 2. Settings > Pages > Deploy from a branch > `leade` / `(root)` > Save.
 
-## Relier les formulaires à Google Sheets
+## Recevoir les leads par email (déjà actif)
+Chaque demande est envoyée à renovrenta@gmail.com (réglage EMAIL_LEADS dans config.js, via FormSubmit).
+La toute première fois : envoyez une demande de test depuis le site en ligne, puis cliquez sur « Activate Form »
+dans l'email reçu de FormSubmit (regardez aussi dans les spams). Ensuite, chaque lead arrive par email.
+
+## En plus : enregistrer les leads dans Google Sheets (conseillé)
 1. Importer RenovRenta_Donnees.xlsx dans Google Sheets (Fichier > Importer > Remplacer).
 2. Extensions > Apps Script : coller Code.gs, mettre votre email dans EMAIL_NOTIFICATION, Enregistrer.
 3. Déployer > Nouveau déploiement > Application Web > Exécuter en tant que : Moi > Accès : Tout le monde.
