@@ -1,417 +1,869 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LeadRénov&apos; — Leads qualifiés Pompes à Chaleur, Isolation &amp; Panneaux Solaires</title>
-<meta name="description" content="Générateur de leads qualifiés pour artisans RGE : pompes à chaleur, isolation thermique et panneaux solaires. Développez votre activité avec des prospects vérifiés.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>RenovRenta – Devis gratuits de professionnels de la rénovation près de chez vous</title>
+<meta name="description" content="Isolation, pompe à chaleur, panneaux solaires, fenêtres, toiture… Décrivez votre projet en 2 minutes et recevez jusqu'à 3 devis de professionnels de votre région. Gratuit et sans engagement.">
+<meta property="og:title" content="RenovRenta – Vos devis de rénovation gratuits">
+<meta property="og:description" content="Décrivez votre projet en 2 minutes. Des professionnels de votre région vous recontactent. Gratuit, sans engagement.">
+<meta name="theme-color" content="#0f3d2e">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://elya1234.github.io/Leade/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<!-- Google Search Console : remplacez CODE_GOOGLE par le code donné par Google (méthode « Balise HTML ») -->
+<meta name="google-site-verification" content="CODE_GOOGLE">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://elya1234.github.io/Leade/">
+<meta property="og:site_name" content="RenovRenta">
+<meta property="og:image" content="https://elya1234.github.io/Leade/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://elya1234.github.io/Leade/#org","name":"RenovRenta","url":"https://elya1234.github.io/Leade/","logo":"https://elya1234.github.io/Leade/apple-touch-icon.png","description":"Service privé de mise en relation entre particuliers et professionnels de la rénovation en France."},
+{"@type":"WebSite","@id":"https://elya1234.github.io/Leade/#site","url":"https://elya1234.github.io/Leade/","name":"RenovRenta","inLanguage":"fr-FR","publisher":{"@id":"https://elya1234.github.io/Leade/#org"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Le service est-il vraiment gratuit ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Votre demande est gratuite et sans engagement. RenovRenta est rémunéré par les professionnels partenaires, qui paient pour être mis en relation avec des particuliers ayant un projet."}},
+{"@type":"Question","name":"Combien de professionnels vont me contacter ?","acceptedAnswer":{"@type":"Answer","text":"3 au maximum, choisis selon votre type de travaux et votre localisation."}},
+{"@type":"Question","name":"Suis-je obligé d'accepter un devis ?","acceptedAnswer":{"@type":"Answer","text":"Non. Vous êtes libre de comparer, de poser vos questions et de ne donner suite à aucune proposition."}},
+{"@type":"Question","name":"Sous quel délai serai-je recontacté ?","acceptedAnswer":{"@type":"Answer","text":"En général sous 48 heures ouvrées. Nous pouvons d'abord vous appeler pour préciser votre besoin."}},
+{"@type":"Question","name":"Est-ce un organisme public ?","acceptedAnswer":{"@type":"Answer","text":"Non. RenovRenta est un service privé et indépendant de mise en relation, non affilié à l'État, à France Rénov' ni à l'Anah."}}
+]}
+]}
+</script>
+<style>
+:root{
+  --vert:#1f7a5a; --vert-fonce:#0f3d2e; --vert-2:#155c43; --menthe:#e8f5ef; --menthe-2:#d3ede1;
+  --orange:#f59e0b; --orange-fonce:#d97706;
+  --creme:#fbfaf7; --texte:#15201b; --gris:#5a6862; --bord:#e3e8e5; --erreur:#c62828;
+  --ombre:0 20px 50px -12px rgba(15,61,46,.28); --ombre-s:0 4px 14px rgba(15,61,46,.08);
+  --font:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--font);color:var(--texte);background:var(--creme);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--vert)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+svg.i{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.infobar{background:var(--vert-fonce);color:#cfe8dc;font-size:.82rem;text-align:center;padding:7px 12px}
+.infobar b{color:#fff}
+header.top{background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--bord);position:sticky;top:0;z-index:40}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--vert-fonce);font-weight:800;font-size:1.22rem;letter-spacing:-.01em}
+.logo small{display:block;font-weight:500;font-size:.72rem;color:var(--gris);letter-spacing:0;margin-top:-3px}
+.nav{display:flex;align-items:center;gap:22px}
+.nav a.l{color:var(--texte);text-decoration:none;font-weight:600;font-size:.93rem}
+.nav a.l:hover{color:var(--vert)}
+.btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#1f1300;text-decoration:none;font-weight:800;padding:11px 18px;border-radius:12px;box-shadow:0 6px 16px -6px rgba(217,119,6,.7);transition:.15s;border:0;font-family:inherit;font-size:.95rem;cursor:pointer}
+.btn-cta:hover{background:var(--orange-fonce);color:#fff}
+.demo{display:none;background:#fff4d6;color:#6b4e00;text-align:center;padding:8px 16px;font-size:.85rem}
+
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--vert-fonce)}
+.hero::before{content:"";position:absolute;inset:0;background-image:var(--photo);background-size:cover;background-position:center 40%;opacity:.55}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(9,38,28,.96) 0%,rgba(9,38,28,.85) 42%,rgba(9,38,28,.35) 100%)}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 470px;gap:56px;align-items:center;padding-top:56px;padding-bottom:64px}
+.pastille{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);padding:6px 12px;border-radius:999px;font-size:.84rem;font-weight:600}
+.pastille .pt{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+.hero h1{font-size:3rem;line-height:1.08;margin:18px 0 18px;letter-spacing:-.03em;font-weight:800}
+.hero h1 span{color:#8ee3bd}
+.hero p.accroche{font-size:1.15rem;color:#d5e9df;margin:0 0 26px;max-width:540px}
+.plus{list-style:none;margin:0 0 30px;padding:0;display:grid;gap:12px}
+.plus li{display:flex;gap:12px;align-items:center;font-weight:600}
+.plus .ck{width:26px;height:26px;border-radius:50%;background:#4ade80;color:var(--vert-fonce);display:grid;place-items:center;flex:none}
+.plus .ck svg{width:15px;height:15px;stroke-width:3}
+.garanties{display:flex;flex-wrap:wrap;gap:10px}
+.garanties div{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:9px 12px;font-size:.86rem;font-weight:600}
+
+.carte{background:#fff;color:var(--texte);border-radius:20px;box-shadow:var(--ombre);overflow:hidden;scroll-margin-top:84px}
+.carte-tete{background:var(--menthe);padding:18px 24px 14px;border-bottom:1px solid var(--menthe-2)}
+.carte-tete .t{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.carte-tete h2{margin:0;font-size:1.12rem;font-weight:800;color:var(--vert-fonce)}
+.carte-tete .etp{font-size:.8rem;font-weight:700;color:var(--vert);white-space:nowrap}
+.progress{height:6px;background:#fff;border-radius:99px;overflow:hidden;margin-top:12px}
+.progress span{display:block;height:100%;width:25%;background:linear-gradient(90deg,var(--vert),#34b27f);transition:width .35s ease;border-radius:99px}
+form{padding:22px 24px 24px}
+fieldset{border:0;padding:0;margin:0;min-width:0}
+.etape{display:none}
+.etape.active{display:block;animation:ent .28s ease}
+.etape.sans-anim{animation:none}
+@keyframes ent{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+.q{font-size:1.15rem;font-weight:800;margin:0 0 4px;letter-spacing:-.01em}
+.q-sous{color:var(--gris);font-size:.9rem;margin:0 0 16px}
+.tuiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tuile input,.pill input{position:absolute;opacity:0;pointer-events:none}
+.tuile,.pill{position:relative}
+.tuile label{display:flex;flex-direction:column;align-items:flex-start;gap:8px;min-height:92px;padding:14px;border:1.5px solid var(--bord);border-radius:14px;cursor:pointer;font-weight:700;font-size:.92rem;line-height:1.25;transition:.15s;background:#fff}
+.tuile label .ico{width:38px;height:38px;border-radius:10px;background:var(--menthe);color:var(--vert);display:grid;place-items:center}
+.tuile label:hover{border-color:var(--vert);box-shadow:var(--ombre-s);transform:translateY(-1px)}
+.tuile input:checked+label{border-color:var(--vert);background:var(--menthe);box-shadow:inset 0 0 0 1px var(--vert)}
+.tuile input:checked+label .ico{background:var(--vert);color:#fff}
+.tuile input:focus-visible+label,.pill input:focus-visible+label{outline:3px solid #9fdcc3;outline-offset:2px}
+.champ{margin-bottom:16px}
+.champ>label,.lbl{display:block;font-weight:700;font-size:.9rem;margin-bottom:7px}
+.champ input[type=text],.champ input[type=tel],.champ input[type=email],.champ select,.champ textarea{width:100%;font:inherit;font-size:16px;padding:13px 14px;border:1.5px solid var(--bord);border-radius:12px;background:#fff;color:var(--texte);transition:.15s;-webkit-appearance:none;appearance:none}
+.champ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235a6862' stroke-width='2' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.champ textarea{min-height:84px;resize:vertical}
+.champ input:focus,.champ select:focus,.champ textarea:focus{outline:none;border-color:var(--vert);box-shadow:0 0 0 4px #dbf0e6}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill label{display:inline-flex;align-items:center;gap:7px;padding:10px 15px;border:1.5px solid var(--bord);border-radius:999px;cursor:pointer;font-weight:700;font-size:.9rem;background:#fff;transition:.15s}
+.pill label:hover{border-color:var(--vert)}
+.pill input:checked+label{border-color:var(--vert);background:var(--vert);color:#fff}
+.deux{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.err{color:var(--erreur);font-size:.83rem;margin-top:6px;display:none;font-weight:600}
+.invalide .err{display:block}
+.invalide input,.invalide select{border-color:var(--erreur)!important;background:#fff8f8}
+.recap{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 14px}
+.recap span{background:var(--menthe);color:var(--vert-fonce);font-size:.78rem;font-weight:700;padding:4px 10px;border-radius:999px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.8rem;color:var(--gris);line-height:1.45;background:var(--creme);padding:12px;border-radius:12px;border:1px solid var(--bord);cursor:pointer}
+.champ>label.consent{font-weight:400;font-size:.8rem}
+.consent input{margin-top:2px;width:19px;height:19px;flex:none;accent-color:var(--vert)}
+.consent button{background:none;border:0;padding:0;color:var(--vert);text-decoration:underline;font:inherit;cursor:pointer}
+.actions{display:flex;gap:10px;margin-top:6px}
+.btn{font:inherit;font-weight:800;border:0;border-radius:12px;padding:15px 18px;cursor:pointer;transition:.15s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn-go{background:var(--orange);color:#1f1300;flex:1;font-size:1rem;box-shadow:0 8px 18px -8px rgba(217,119,6,.8)}
+.btn-go:hover{background:var(--orange-fonce);color:#fff}
+.btn-go[disabled]{opacity:.65;cursor:wait}
+.btn-ret{background:#fff;color:var(--gris);border:1.5px solid var(--bord);padding:15px 17px}
+#err-envoi{margin-bottom:10px}
+.securite{display:flex;align-items:center;justify-content:center;gap:6px;font-size:.78rem;color:var(--gris);margin:12px 0 0;text-align:center}
+.securite svg{width:14px;height:14px}
+.merci{text-align:center;padding:14px 4px 6px}
+.merci .rond{width:72px;height:72px;border-radius:50%;background:var(--menthe);color:var(--vert);display:grid;place-items:center;margin:0 auto 14px}
+.merci .rond svg{width:34px;height:34px;stroke-width:2.6}
+.merci h3{font-size:1.3rem;margin:0 0 8px}
+.merci ol{text-align:left;background:var(--creme);border-radius:12px;padding:14px 14px 14px 34px;font-size:.9rem;color:var(--gris);margin:16px 0 0}
+.merci ol li{margin:4px 0}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+.confiance{background:#fff;border-bottom:1px solid var(--bord)}
+.confiance .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-top:22px;padding-bottom:22px}
+.confiance .wrap>div{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--gris)}
+.confiance b{display:block;color:var(--texte);font-size:.96rem}
+.confiance .ic{width:44px;height:44px;border-radius:12px;background:var(--menthe);color:var(--vert);display:grid;place-items:center;flex:none}
+
+section.s{padding:84px 0}
+section.blanc{background:#fff}
+.sur-titre{display:inline-block;color:var(--vert);font-weight:800;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+h2.titre{font-size:2.2rem;line-height:1.15;letter-spacing:-.025em;margin:0 0 14px;font-weight:800}
+p.intro{color:var(--gris);font-size:1.08rem;margin:0 0 40px;max-width:640px}
+.centre{text-align:center}
+.centre p.intro{margin-left:auto;margin-right:auto}
+
+.cm{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.photo{border-radius:22px;min-height:440px;background:linear-gradient(135deg,var(--menthe-2),#b9dfcc);background-image:var(--photo),linear-gradient(135deg,var(--menthe-2),#b9dfcc);background-size:cover;background-position:center;box-shadow:var(--ombre);position:relative}
+.photo .badge{position:absolute;left:20px;bottom:20px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--ombre-s);display:flex;gap:12px;align-items:center;font-size:.88rem;max-width:280px}
+.photo .badge .ic{width:40px;height:40px;border-radius:10px;background:var(--vert);color:#fff;display:grid;place-items:center;flex:none}
+.etapes{display:grid;gap:14px}
+.etapes .e{display:flex;gap:16px;background:var(--creme);border:1px solid var(--bord);border-radius:16px;padding:18px}
+.etapes .n{width:40px;height:40px;border-radius:12px;background:var(--vert);color:#fff;font-weight:800;display:grid;place-items:center;flex:none;font-size:1.05rem}
+.etapes h3{margin:0 0 4px;font-size:1.05rem}
+.etapes p{margin:0;color:var(--gris);font-size:.94rem}
+
+.cartes-t{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.ct{background:#fff;border:1px solid var(--bord);border-radius:18px;overflow:hidden;text-align:left;cursor:pointer;font:inherit;color:inherit;padding:0;transition:.2s;display:flex;flex-direction:column}
+.ct:hover{transform:translateY(-3px);box-shadow:var(--ombre)}
+.ct .im{height:150px;background-image:var(--photo),linear-gradient(135deg,var(--menthe-2),#b9dfcc);background-size:cover;background-position:center;position:relative}
+.ct .im .ico{position:absolute;left:14px;bottom:-20px;width:44px;height:44px;border-radius:12px;background:var(--vert);color:#fff;display:grid;place-items:center;box-shadow:var(--ombre-s)}
+.ct .bd{padding:28px 16px 18px;flex:1;display:flex;flex-direction:column}
+.ct h3{margin:0 0 6px;font-size:1.02rem}
+.ct p{margin:0 0 12px;color:var(--gris);font-size:.88rem;flex:1}
+.ct .go{color:var(--vert);font-weight:800;font-size:.88rem}
+
+.aides{background:var(--vert-fonce);color:#fff;border-radius:26px;padding:52px;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;position:relative;overflow:hidden}
+.aides::after{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(74,222,128,.22),transparent 70%)}
+.aides h2{color:#fff}
+.aides p{color:#cfe8dc}
+.aides .liste{display:grid;gap:12px;position:relative;z-index:1}
+.aides .liste div{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:14px 16px}
+.aides .liste b{display:block;font-size:1rem}
+.aides .liste span{color:#bcd9cb;font-size:.88rem}
+.aides .note{font-size:.8rem;color:#9cc2b1;margin-top:18px}
+.aides .note a{color:#fff}
+
+.pq{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pq>div{background:#fff;border:1px solid var(--bord);border-radius:18px;padding:24px}
+.pq .ic{width:48px;height:48px;border-radius:14px;background:var(--menthe);color:var(--vert);display:grid;place-items:center;margin-bottom:14px}
+.pq h3{margin:0 0 6px;font-size:1.06rem}
+.pq p{margin:0;color:var(--gris);font-size:.93rem}
+
+.faq{max-width:800px;margin:0 auto}
+.faq details{background:#fff;border:1px solid var(--bord);border-radius:14px;margin-bottom:10px;transition:.15s}
+.faq details[open]{box-shadow:var(--ombre-s);border-color:var(--menthe-2)}
+.faq summary{cursor:pointer;font-weight:700;padding:18px 52px 18px 20px;list-style:none;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:22px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--vert);border-bottom:2.5px solid var(--vert);transform:translateY(-70%) rotate(45deg);transition:.2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{margin:0;padding:0 20px 18px;color:var(--gris)}
+
+.final{position:relative;color:#fff;background:var(--vert-2);overflow:hidden;text-align:center}
+.final::before{content:"";position:absolute;inset:0;background-image:var(--photo);background-size:cover;background-position:center;opacity:.22}
+.final .wrap{position:relative;padding-top:80px;padding-bottom:80px}
+.final h2{color:#fff}
+.final p{color:#d5e9df;font-size:1.1rem;margin:0 auto 28px;max-width:560px}
+.final .btn-cta{font-size:1.05rem;padding:16px 28px}
+
+footer{background:#0a2a20;color:#a9c7b9;padding:44px 0 28px;font-size:.88rem}
+footer .grille{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px}
+footer h4{color:#fff;margin:0 0 10px;font-size:.95rem}
+footer a,footer button.lien{color:#d7ebe2;text-decoration:none;background:none;border:0;font:inherit;cursor:pointer;padding:0;display:block;margin:6px 0;text-align:left}
+footer a:hover,footer button.lien:hover{color:#fff;text-decoration:underline}
+footer .bas{border-top:1px solid rgba(255,255,255,.1);margin-top:28px;padding-top:18px;font-size:.8rem;color:#7fa495}
+
+.barre-mobile{display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.97);border-top:1px solid var(--bord);box-shadow:0 -8px 20px rgba(0,0,0,.06);transform:translateY(110%);transition:transform .25s}
+.barre-mobile.on{transform:none}
+.barre-mobile a{display:flex;justify-content:center;width:100%;padding:14px}
+
+dialog{max-width:720px;width:calc(100% - 28px);border:0;border-radius:18px;padding:0;box-shadow:var(--ombre)}
+dialog::backdrop{background:rgba(5,20,14,.55)}
+dialog .contenu{padding:28px;max-height:74vh;overflow:auto;font-size:.93rem}
+dialog h2{margin-top:0}
+dialog h3{font-size:1rem;margin:18px 0 6px}
+dialog .fermer{background:#fff;border-top:1px solid var(--bord);padding:12px 28px;text-align:right}
+.aremplir{background:#fff4d6;padding:0 4px;border-radius:4px}
+.cookies{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:560px;margin:0 auto;background:#fff;border:1px solid var(--bord);border-radius:16px;box-shadow:var(--ombre);padding:18px;display:none;font-size:.88rem;color:var(--gris)}
+.cookies.on{display:block}
+.cookies b{color:var(--texte);display:block;margin-bottom:4px;font-size:.95rem}
+.cookies .bt{display:flex;gap:10px;margin-top:12px}
+.cookies .bt button{flex:1;font:inherit;font-weight:800;border-radius:10px;padding:11px;cursor:pointer;border:1.5px solid var(--vert)}
+.cookies .refus{background:#fff;color:var(--vert)}
+.cookies .ok{background:var(--vert);color:#fff}
+
+@media (max-width:1020px){
+  .hero .wrap{grid-template-columns:1fr;gap:22px;padding-top:24px;padding-bottom:32px}
+  .hero::after{background:linear-gradient(180deg,rgba(9,38,28,.93),rgba(9,38,28,.86))}
+  .hero h1{font-size:2rem;margin:12px 0 10px}
+  .hero p.accroche{font-size:1rem;margin-bottom:0}
+  .plus,.garanties{display:none}
+  .cm,.aides{grid-template-columns:1fr}
+  .photo{min-height:260px}
+  .cartes-t{grid-template-columns:1fr 1fr}
+  .pq{grid-template-columns:1fr}
+  .confiance .wrap{grid-template-columns:1fr 1fr}
+  .nav a.l{display:none}
+  footer .grille{grid-template-columns:1fr}
+  .barre-mobile{display:block}
+  section.s{padding:60px 0}
+  h2.titre{font-size:1.75rem}
+  .aides{padding:32px 24px;gap:28px}
+}
+@media (max-width:480px){
+  .wrap{padding:0 16px}
+  form{padding:18px 16px 20px}
+  .carte-tete{padding:16px 16px 12px}
+  .tuile label{min-height:84px;padding:12px;font-size:.87rem}
+  .deux{grid-template-columns:1fr}
+  .cartes-t{grid-template-columns:1fr 1fr;gap:12px}
+  .ct .im{height:96px}
+  .ct .im .ico{width:38px;height:38px;bottom:-16px;left:12px}
+  .ct .bd{padding:24px 12px 14px}
+  .ct h3{font-size:.92rem}
+  .ct p{display:none}
+  .ct .go{font-size:.8rem}
+  .confiance .wrap{grid-template-columns:1fr;gap:12px}
+  .btn-cta.head{padding:9px 12px;font-size:.84rem}
+  .logo small{display:none}
+  .infobar{font-size:.74rem}
+  .hero h1{font-size:1.8rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script>document.documentElement.classList.add('rr-js')</script>
+<link rel="stylesheet" href="ux.css">
 </head>
 <body>
 
-<!-- Header -->
-<header class="site-header" id="header">
-  <div class="container header-inner">
-    <a href="#top" class="logo">Lead<span>Rénov</span><span class="logo-dot">'</span></a>
-    <nav class="nav" id="nav">
-      <a href="#services">Nos leads</a>
-      <a href="#comment">Comment ça marche</a>
-      <a href="#avantages">Pourquoi nous</a>
-      <a href="#temoignages">Avis</a>
-      <a href="#contact" class="nav-cta">Demander un devis</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-isolation" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M8 14h8M8 17h8"/></symbol>
+  <symbol id="i-pac" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="10" cy="12" r="4"/><path d="M10 8v8M6 12h8"/><path d="M17 9h1M17 12h1M17 15h1"/></symbol>
+  <symbol id="i-solaire" viewBox="0 0 24 24"><path d="M4 18l2-10h12l2 10z"/><path d="M5 13h14M9 8l-1 10M15 8l1 10"/><path d="M12 2v2M18.5 4.5l-1 1M5.5 4.5l1 1"/></symbol>
+  <symbol id="i-fenetre" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1"/><path d="M12 3v18M5 12h14"/></symbol>
+  <symbol id="i-toiture" viewBox="0 0 24 24"><path d="M2 12L12 4l10 8"/><path d="M5 10v9h14v-9"/><path d="M9 7.5V4h3"/></symbol>
+  <symbol id="i-sdb" viewBox="0 0 24 24"><path d="M4 12h16v3a4 4 0 01-4 4H8a4 4 0 01-4-4z"/><path d="M6 12V6a2 2 0 014 0"/><path d="M7 19l-1 2M17 19l1 2"/></symbol>
+  <symbol id="i-complete" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.5 2.5-2.1-.4-.4-2.1z"/></symbol>
+  <symbol id="i-autre" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M17 6.5A7 7 0 1017 17.5"/><path d="M4 10h9M4 14h9"/></symbol>
+  <symbol id="i-main" viewBox="0 0 24 24"><path d="M7 11V6a2 2 0 014 0v5"/><path d="M11 10V4.5a2 2 0 014 0V11"/><path d="M15 9a2 2 0 014 0v5a7 7 0 01-7 7h-1a6 6 0 01-5-2.7L3.5 15a1.8 1.8 0 013-2L8 14"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
+  <symbol id="i-temps" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-balance" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M7 21h10"/><path d="M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/></symbol>
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></symbol>
+  <symbol id="i-fleche" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<div class="infobar"><b>Service 100 % gratuit</b> pour les particuliers · Sans engagement · Réponse sous 48 h ouvrées</div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#">
+      <svg width="36" height="36" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#1f7a5a"/><path d="M7 17l9-8 9 8v8h-6v-5h-6v5H7z" fill="#fff"/><circle cx="24" cy="8" r="3" fill="#f59e0b"/></svg>
+      <span><span class="nom-marque">RenovRenta</span><small>Devis de rénovation près de chez vous</small></span>
+    </a>
+    <nav class="nav">
+      <a class="l" href="#comment">Comment ça marche</a>
+      <a class="l" href="#travaux">Travaux</a>
+      <a class="l" href="#aides">Aides</a>
+      <a class="l" href="#faq">Questions</a>
+      <a class="l" href="artisans.html">Vous êtes artisan ?</a>
+      <a class="btn-cta head" href="#formulaire" data-cta>Mes devis gratuits</a>
     </nav>
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </header>
+<div class="demo" id="bandeau-demo">Mode démonstration : le formulaire n'est pas encore relié à Google Sheets (SCRIPT_URL).</div>
 
-<!-- Hero -->
-<section class="hero" id="top">
-  <div class="hero-bg"></div>
-  <div class="container hero-inner">
-    <div class="hero-text">
-      <p class="eyebrow">Génération de leads pour la rénovation énergétique</p>
-      <h1>Des <span class="highlight">leads qualifiés</span> en pompes à chaleur, isolation &amp; panneaux solaires</h1>
-      <p class="hero-sub">
-        Nous connectons les particuliers prêts à passer à l'action avec les meilleurs artisans RGE de leur région.
-        Recevez des prospects vérifiés, exclusifs et prêts à être signés.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Recevoir des leads</a>
-        <a href="#comment" class="btn btn-ghost">Voir comment ça marche</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num" data-count="1200">0</span>
-          <span class="stat-label">leads livrés / mois</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-count="98">0</span>
-          <span class="stat-label">% coordonnées vérifiées</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num" data-count="250">0</span>
-          <span class="stat-label">artisans partenaires</span>
-        </div>
-      </div>
-    </div>
-    <div class="hero-visual" aria-hidden="true">
-      <div class="hero-card card-1">
-        <div class="hero-card-icon">🔥</div>
-        <div>
-          <strong>Pompe à chaleur</strong>
-          <span>Nouveau lead — Lyon (69)</span>
-        </div>
-      </div>
-      <div class="hero-card card-2">
-        <div class="hero-card-icon">🧱</div>
-        <div>
-          <strong>Isolation combles</strong>
-          <span>Nouveau lead — Nantes (44)</span>
-        </div>
-      </div>
-      <div class="hero-card card-3">
-        <div class="hero-card-icon">☀️</div>
-        <div>
-          <strong>Panneaux solaires</strong>
-          <span>Nouveau lead — Toulouse (31)</span>
-        </div>
-      </div>
-      <div class="hero-orb"></div>
-    </div>
-  </div>
-</section>
-
-<!-- Logos / trust bar -->
-<section class="trustbar">
-  <div class="container trustbar-inner">
-    <p>Ils font confiance à nos leads</p>
-    <div class="trustbar-logos">
-      <span>MaPrimeRénov'</span>
-      <span>RGE Qualibat</span>
-      <span>QualiPAC</span>
-      <span>QualiSol</span>
-      <span>Certif. RGE</span>
-    </div>
-  </div>
-</section>
-
-<!-- Services -->
-<section class="services" id="services">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow center">Nos secteurs</p>
-      <h2>Des leads ciblés pour trois marchés porteurs</h2>
-      <p class="section-sub">Chaque lead est qualifié selon des critères précis : projet, budget, délai et éligibilité aux aides.</p>
-    </div>
-    <div class="service-grid">
-      <div class="service-card">
-        <div class="service-icon icon-orange">🔥</div>
-        <h3>Pompes à chaleur</h3>
-        <p>Leads de particuliers souhaitant remplacer leur chauffage par une PAC air/eau, air/air ou géothermique, éligibles MaPrimeRénov'.</p>
-        <ul class="service-list">
-          <li>Propriétaire vérifié</li>
-          <li>Type de logement qualifié</li>
-          <li>Budget &amp; échéance connus</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <div class="service-icon icon-green">🧱</div>
-        <h3>Isolation thermique</h3>
-        <p>Leads pour l'isolation des combles, murs et sols : rénovation globale ou ponctuelle, avec estimation des aides disponibles.</p>
-        <ul class="service-list">
-          <li>Surface &amp; type de bien</li>
-          <li>Ancienneté du logement</li>
-          <li>Motivation confirmée</li>
-        </ul>
-      </div>
-      <div class="service-card">
-        <div class="service-icon icon-blue">☀️</div>
-        <h3>Panneaux solaires</h3>
-        <p>Leads de propriétaires intéressés par le photovoltaïque ou l'autoconsommation, avec analyse de faisabilité toiture.</p>
-        <ul class="service-list">
-          <li>Orientation &amp; surface de toit</li>
-          <li>Consommation électrique</li>
-          <li>Projet autoconsommation / revente</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Comment ça marche -->
-<section class="comment" id="comment">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow center">Notre process</p>
-      <h2>Comment ça marche</h2>
-      <p class="section-sub">Un circuit simple, rapide et transparent — du clic du particulier jusqu'au rendez-vous chez vous.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Le particulier fait sa demande</h3>
-        <p>Via nos campagnes digitales ciblées, un particulier remplit un formulaire détaillé sur son projet.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Vérification &amp; qualification</h3>
-        <p>Notre équipe vérifie l'identité, le téléphone et les critères d'éligibilité avant validation du lead.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Vous recevez le lead</h3>
-        <p>Le lead vous est transmis en temps réel par email, SMS ou dans votre espace client dédié.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">4</div>
-        <h3>Vous concluez la vente</h3>
-        <p>Vous contactez le prospect sous 24h pour un rendez-vous et transformez le lead en client.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Avantages -->
-<section class="avantages" id="avantages">
-  <div class="container avantages-inner">
-    <div class="avantages-visual" aria-hidden="true">
-      <div class="avantages-blob"></div>
-      <div class="avantages-card">
-        <span class="avantages-emoji">✅</span>
-        <strong>Lead exclusif</strong>
-        <p>Vendu à un seul artisan, jamais partagé.</p>
-      </div>
-    </div>
-    <div class="avantages-text">
-      <p class="eyebrow">Pourquoi choisir nos leads</p>
-      <h2>Des leads pensés pour votre rentabilité</h2>
-      <div class="avantage-item">
-        <span class="avantage-check">✓</span>
-        <div>
-          <h4>Exclusivité garantie</h4>
-          <p>Chaque lead n'est vendu qu'à un seul artisan sur votre secteur, pas de mise en concurrence.</p>
-        </div>
-      </div>
-      <div class="avantage-item">
-        <span class="avantage-check">✓</span>
-        <div>
-          <h4>Zone géographique ciblée</h4>
-          <p>Recevez uniquement des leads dans votre rayon d'intervention et vos départements choisis.</p>
-        </div>
-      </div>
-      <div class="avantage-item">
-        <span class="avantage-check">✓</span>
-        <div>
-          <h4>Paiement au lead ou à l'abonnement</h4>
-          <p>Choisissez la formule adaptée à votre volume d'activité, sans engagement long.</p>
-        </div>
-      </div>
-      <div class="avantage-item">
-        <span class="avantage-check">✓</span>
-        <div>
-          <h4>Lead remplacé si invalide</h4>
-          <p>Faux numéro, doublon ou hors zone : le lead est recrédité sous 48h, sans discussion.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Tarifs -->
-<section class="tarifs" id="tarifs">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow center">Tarifs</p>
-      <h2>Une offre simple, adaptée à votre volume</h2>
-      <p class="section-sub">Pas de frais cachés. Résiliable à tout moment.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <h3>Starter</h3>
-        <p class="price">À partir de <span>35 €</span><small>/ lead</small></p>
-        <ul>
-          <li>Leads à l'unité</li>
-          <li>1 secteur d'activité</li>
-          <li>1 zone géographique</li>
-          <li>Support par email</li>
-        </ul>
-        <a href="#contact" class="btn btn-outline">Choisir Starter</a>
-      </div>
-      <div class="price-card featured">
-        <span class="badge">Le plus populaire</span>
-        <h3>Pro</h3>
-        <p class="price">À partir de <span>29 €</span><small>/ lead</small></p>
-        <ul>
-          <li>Volume mensuel garanti</li>
-          <li>Jusqu'à 3 secteurs d'activité</li>
-          <li>Zones géographiques multiples</li>
-          <li>Espace client + support prioritaire</li>
-        </ul>
-        <a href="#contact" class="btn btn-primary">Choisir Pro</a>
-      </div>
-      <div class="price-card">
-        <h3>Sur mesure</h3>
-        <p class="price">Tarif <span>personnalisé</span></p>
-        <ul>
-          <li>Grands volumes / franchises</li>
-          <li>Tous secteurs &amp; zones France entière</li>
-          <li>Intégration CRM (API/webhook)</li>
-          <li>Conseiller dédié</li>
-        </ul>
-        <a href="#contact" class="btn btn-outline">Nous contacter</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Témoignages -->
-<section class="temoignages" id="temoignages">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow center">Ils nous font confiance</p>
-      <h2>Ce que disent nos partenaires artisans</h2>
-    </div>
-    <div class="temoignage-grid">
-      <div class="temoignage-card">
-        <p>« Depuis que je travaille avec LeadRénov', mon agenda de poses de PAC est plein pour les deux prochains mois. Les leads sont vraiment qualifiés. »</p>
-        <div class="temoignage-auteur">
-          <div class="avatar">TM</div>
-          <div>
-            <strong>Thomas M.</strong>
-            <span>Installateur PAC — Rhône</span>
-          </div>
-        </div>
-      </div>
-      <div class="temoignage-card">
-        <p>« Le taux de transformation est bien meilleur qu'avec mes anciens prestataires. Les coordonnées sont toujours bonnes. »</p>
-        <div class="temoignage-auteur">
-          <div class="avatar">SL</div>
-          <div>
-            <strong>Sophie L.</strong>
-            <span>Isolation &amp; combles — Loire-Atlantique</span>
-          </div>
-        </div>
-      </div>
-      <div class="temoignage-card">
-        <p>« Enfin des leads exclusifs pour le photovoltaïque. Le service client répond vite en cas de souci. Je recommande. »</p>
-        <div class="temoignage-auteur">
-          <div class="avatar">KB</div>
-          <div>
-            <strong>Karim B.</strong>
-            <span>Installateur solaire — Haute-Garonne</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA / Contact -->
-<section class="contact" id="contact">
-  <div class="container contact-inner">
-    <div class="contact-text">
-      <p class="eyebrow">Prêt à démarrer</p>
-      <h2>Demandez vos premiers leads dès aujourd'hui</h2>
-      <p>Dites-nous votre activité et votre zone d'intervention, nous revenons vers vous sous 24h ouvrées avec une offre adaptée.</p>
-      <ul class="contact-points">
-        <li>📞 01 23 45 67 89</li>
-        <li>✉️ contact@leadrenov.fr</li>
-        <li>📍 France entière</li>
+<main>
+<div class="hero" id="hero">
+  <div class="wrap">
+    <div>
+      <span class="pastille"><span class="pt"></span>Professionnels disponibles dans votre région</span>
+      <h1 id="titre-hero">Rénovez votre logement,<br><span>comparez jusqu'à <span class="nb-pros">3</span> devis gratuits.</span></h1>
+      <p class="accroche">Décrivez votre projet en 2 minutes : des professionnels du bâtiment près de chez vous vous rappellent pour étudier vos travaux et vous proposer un devis.</p>
+      <ul class="plus">
+        <li><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Une seule demande au lieu de dizaines d'appels</li>
+        <li><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Des entreprises qui interviennent dans votre secteur</li>
+        <li><span class="ck"><svg class="i"><use href="#i-check"/></svg></span>Vous comparez et choisissez librement, sans obligation</li>
       </ul>
+      <div class="garanties">
+        <div><svg class="i"><use href="#i-euro"/></svg>0 € pour vous</div>
+        <div><svg class="i"><use href="#i-temps"/></svg>2 minutes</div>
+        <div><svg class="i"><use href="#i-lock"/></svg>Données protégées</div>
+      </div>
     </div>
-    <form class="contact-form" id="leadForm" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="nom">Nom &amp; prénom</label>
-          <input type="text" id="nom" name="nom" required placeholder="Jean Dupont">
-        </div>
-        <div class="form-group">
-          <label for="entreprise">Entreprise</label>
-          <input type="text" id="entreprise" name="entreprise" placeholder="Nom de votre entreprise">
-        </div>
+
+    <div class="carte" id="formulaire">
+      <div class="carte-tete">
+        <div class="t"><h2 id="carte-titre">Votre projet en 2 minutes</h2><span class="etp" id="etape-info">Étape 1/4</span></div>
+        <div class="progress" aria-hidden="true"><span id="barre"></span></div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="vous@exemple.fr">
+      <form id="form-lead" novalidate>
+        <fieldset class="etape active sans-anim" data-etape="1">
+          <p class="q">Quels travaux envisagez-vous ?</p>
+          <p class="q-sous">Choisissez le projet principal.</p>
+          <div class="tuiles" id="tuiles-travaux"></div>
+        </fieldset>
+
+        <fieldset class="etape" data-etape="2">
+          <p class="q">Parlez-nous de votre logement</p>
+          <p class="q-sous">Pour vous orienter vers les bons professionnels.</p>
+          <div class="champ" data-requis="type_logement">
+            <span class="lbl">Type de logement</span>
+            <div class="pills">
+              <span class="pill"><input type="radio" name="type_logement" id="lg1" value="Maison"><label for="lg1">Maison</label></span>
+              <span class="pill"><input type="radio" name="type_logement" id="lg2" value="Appartement"><label for="lg2">Appartement</label></span>
+              <span class="pill"><input type="radio" name="type_logement" id="lg3" value="Local professionnel"><label for="lg3">Local pro</label></span>
+            </div>
+            <div class="err">Indiquez le type de logement.</div>
+          </div>
+          <div class="champ" data-requis="statut_occupant">
+            <span class="lbl">Vous êtes</span>
+            <div class="pills">
+              <span class="pill"><input type="radio" name="statut_occupant" id="so1" value="Propriétaire"><label for="so1">Propriétaire</label></span>
+              <span class="pill"><input type="radio" name="statut_occupant" id="so2" value="Locataire"><label for="so2">Locataire</label></span>
+              <span class="pill"><input type="radio" name="statut_occupant" id="so3" value="Futur acquéreur"><label for="so3">Futur acquéreur</label></span>
+            </div>
+            <div class="err">Précisez votre situation.</div>
+          </div>
+          <div class="champ" data-requis="delai">
+            <span class="lbl">Quand souhaitez-vous démarrer ?</span>
+            <div class="pills">
+              <span class="pill"><input type="radio" name="delai" id="dl1" value="Dès que possible"><label for="dl1">Dès que possible</label></span>
+              <span class="pill"><input type="radio" name="delai" id="dl2" value="Dans les 3 mois"><label for="dl2">Sous 3 mois</label></span>
+              <span class="pill"><input type="radio" name="delai" id="dl3" value="Dans 3 à 6 mois"><label for="dl3">3 à 6 mois</label></span>
+              <span class="pill"><input type="radio" name="delai" id="dl4" value="Plus tard / je me renseigne"><label for="dl4">Je me renseigne</label></span>
+            </div>
+            <div class="err">Choisissez un délai.</div>
+          </div>
+          <div class="deux">
+            <div class="champ">
+              <label for="surface">Surface (facultatif)</label>
+              <select id="surface" name="surface">
+                <option value="">Je ne sais pas</option>
+                <option>Moins de 50 m²</option><option>50 à 80 m²</option><option>80 à 120 m²</option>
+                <option>120 à 200 m²</option><option>Plus de 200 m²</option>
+              </select>
+            </div>
+            <div class="champ">
+              <label for="budget">Budget (facultatif)</label>
+              <select id="budget" name="budget">
+                <option value="">Pas encore défini</option>
+                <option>Moins de 5 000 €</option><option>5 000 à 15 000 €</option>
+                <option>15 000 à 30 000 €</option><option>Plus de 30 000 €</option>
+              </select>
+            </div>
+          </div>
+          <div class="actions"><button type="button" class="btn btn-ret" data-retour aria-label="Retour">←</button><button type="button" class="btn btn-go" data-suivant>Continuer <svg class="i"><use href="#i-fleche"/></svg></button></div>
+        </fieldset>
+
+        <fieldset class="etape" data-etape="3">
+          <p class="q">Où se situent les travaux ?</p>
+          <p class="q-sous">Nous cherchons des professionnels qui interviennent dans votre commune.</p>
+          <div class="deux">
+            <div class="champ" data-requis="code_postal">
+              <label for="code_postal">Code postal</label>
+              <input type="text" id="code_postal" name="code_postal" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="75011">
+              <div class="err">5 chiffres.</div>
+            </div>
+            <div class="champ" data-requis="ville">
+              <label for="ville">Ville</label>
+              <input type="text" id="ville" name="ville" list="villes" autocomplete="address-level2" placeholder="Votre ville">
+              <datalist id="villes"></datalist>
+              <div class="err">Indiquez la ville.</div>
+            </div>
+          </div>
+          <div class="champ">
+            <label for="description">Précisions sur votre projet (facultatif)</label>
+            <textarea id="description" name="description" maxlength="1500" placeholder="Ex. : isoler les combles d'une maison des années 70, environ 90 m²"></textarea>
+          </div>
+          <div class="actions"><button type="button" class="btn btn-ret" data-retour aria-label="Retour">←</button><button type="button" class="btn btn-go" data-suivant>Dernière étape <svg class="i"><use href="#i-fleche"/></svg></button></div>
+        </fieldset>
+
+        <fieldset class="etape" data-etape="4">
+          <p class="q">Où les professionnels peuvent-ils vous joindre ?</p>
+          <div class="recap" id="recap"></div>
+          <div class="deux">
+            <div class="champ" data-requis="prenom">
+              <label for="prenom">Prénom</label>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name">
+              <div class="err">Indiquez votre prénom.</div>
+            </div>
+            <div class="champ" data-requis="nom">
+              <label for="nom">Nom</label>
+              <input type="text" id="nom" name="nom" autocomplete="family-name">
+              <div class="err">Indiquez votre nom.</div>
+            </div>
+          </div>
+          <div class="champ" data-requis="telephone">
+            <label for="telephone">Téléphone portable</label>
+            <input type="tel" id="telephone" name="telephone" autocomplete="tel" inputmode="tel" placeholder="06 12 34 56 78">
+            <div class="err">Numéro français à 10 chiffres.</div>
+          </div>
+          <div class="champ" data-requis="email">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" inputmode="email" placeholder="vous@exemple.fr">
+            <div class="err">Adresse email invalide.</div>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="website">Ne pas remplir</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+          <div class="champ" data-requis="consentement">
+            <label class="consent">
+              <input type="checkbox" id="consentement" name="consentement" value="oui">
+              <span>J'accepte que ma demande et mes coordonnées soient transmises à <span class="nb-pros">3</span> professionnels du bâtiment au maximum intervenant dans ma région, pour être recontacté(e) par téléphone ou email au sujet de ce projet. Je peux retirer mon accord à tout moment. <button type="button" data-ouvrir="dlg-confidentialite">Confidentialité</button></span>
+            </label>
+            <div class="err">Votre accord est nécessaire pour transmettre la demande.</div>
+          </div>
+          <div class="err" id="err-envoi"></div>
+          <div class="actions"><button type="button" class="btn btn-ret" data-retour aria-label="Retour">←</button><button type="submit" class="btn btn-go" id="btn-envoyer">Recevoir mes devis gratuits</button></div>
+          <p class="securite"><svg class="i"><use href="#i-lock"/></svg>Transmis uniquement aux professionnels retenus pour votre projet.</p>
+        </fieldset>
+
+        <div class="etape" data-etape="5">
+          <div class="merci">
+            <div class="rond"><svg class="i"><use href="#i-check"/></svg></div>
+            <h3>Merci <span id="merci-prenom"></span>, c'est envoyé !</h3>
+            <p style="color:var(--gris);margin:0">Votre demande est bien enregistrée.</p>
+            <ol>
+              <li>Nous vérifions votre projet (nous pouvons vous appeler pour le préciser).</li>
+              <li>Nous le transmettons à <span class="nb-pros">3</span> professionnels de votre secteur au maximum.</li>
+              <li>Ils vous recontactent, généralement sous 48 h ouvrées.</li>
+            </ol>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="telephone">Téléphone</label>
-          <input type="tel" id="telephone" name="telephone" required placeholder="06 12 34 56 78">
-        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="confiance">
+  <div class="wrap">
+    <div><span class="ic"><svg class="i"><use href="#i-euro"/></svg></span><span><b>100 % gratuit</b>pour les particuliers</span></div>
+    <div><span class="ic"><svg class="i"><use href="#i-main"/></svg></span><span><b>Sans engagement</b>vous restez libre</span></div>
+    <div><span class="ic"><svg class="i"><use href="#i-pin"/></svg></span><span><b>Près de chez vous</b>pros de votre secteur</span></div>
+    <div><span class="ic"><svg class="i"><use href="#i-lock"/></svg></span><span><b>Données protégées</b>conforme au RGPD</span></div>
+  </div>
+</div>
+
+<section class="s blanc" id="comment">
+  <div class="wrap cm">
+    <div class="photo" id="photo-comment">
+      <div class="badge"><span class="ic"><svg class="i"><use href="#i-tel"/></svg></span><span><b>Rappel rapide</b><br>par des pros de votre région</span></div>
+    </div>
+    <div>
+      <span class="sur-titre">Comment ça marche</span>
+      <h2 class="titre">Vos devis en 3 étapes simples</h2>
+      <p class="intro">Plus besoin de chercher, appeler et relancer des entreprises une par une.</p>
+      <div class="etapes">
+        <div class="e"><span class="n">1</span><div><h3>Vous décrivez votre projet</h3><p>Type de travaux, logement, localisation : 2 minutes suffisent, sans créer de compte.</p></div></div>
+        <div class="e"><span class="n">2</span><div><h3>Nous sélectionnons des professionnels</h3><p>Nous vérifions votre demande puis la confions à des entreprises qui interviennent dans votre secteur et pour ce type de travaux.</p></div></div>
+        <div class="e"><span class="n">3</span><div><h3>Vous comparez et choisissez</h3><p>Jusqu'à <span class="nb-pros">3</span> professionnels vous recontactent. Vous comparez leurs devis et décidez librement.</p></div></div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="secteur">Secteur d'activité</label>
-          <select id="secteur" name="secteur" required>
-            <option value="">Choisir un secteur</option>
-            <option value="pac">Pompes à chaleur</option>
-            <option value="isolation">Isolation</option>
-            <option value="solaire">Panneaux solaires</option>
-            <option value="plusieurs">Plusieurs secteurs</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="zone">Zone d'intervention</label>
-          <input type="text" id="zone" name="zone" placeholder="Département(s) ou région">
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="message">Message (optionnel)</label>
-        <textarea id="message" name="message" rows="3" placeholder="Votre volume de leads souhaité, vos questions..."></textarea>
-      </div>
-      <input type="hidden" name="formType" value="artisan">
-      <button type="submit" class="btn btn-primary btn-full">Envoyer ma demande</button>
-      <p class="form-note" id="formNote" role="status"></p>
-    </form>
+    </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <a href="#top" class="logo">Lead<span>Rénov</span><span class="logo-dot">'</span></a>
-      <p>Générateur de leads qualifiés pour les professionnels de la rénovation énergétique.</p>
+<section class="s" id="travaux">
+  <div class="wrap">
+    <div class="centre">
+      <span class="sur-titre">Vos travaux</span>
+      <h2 class="titre">Quel est votre projet ?</h2>
+      <p class="intro">Maison ou appartement, petit chantier ou rénovation complète : cliquez sur votre projet pour commencer.</p>
     </div>
-    <div class="footer-col">
-      <h4>Nos leads</h4>
-      <a href="#services">Pompes à chaleur</a>
-      <a href="#services">Isolation</a>
-      <a href="#services">Panneaux solaires</a>
-    </div>
-    <div class="footer-col">
-      <h4>Entreprise</h4>
-      <a href="#comment">Comment ça marche</a>
-      <a href="#avantages">Pourquoi nous</a>
-      <a href="#tarifs">Tarifs</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="mailto:contact@leadrenov.fr">contact@leadrenov.fr</a>
-      <a href="tel:0123456789">01 23 45 67 89</a>
-    </div>
-    <div class="footer-col">
-      <h4>Particuliers</h4>
-      <a href="demande-devis.html">Demander un devis gratuit</a>
-    </div>
-    <div class="footer-col">
-      <h4>Artisans partenaires</h4>
-      <a href="espace-client.html">Espace client</a>
+    <div class="cartes-t" id="cartes-travaux"></div>
+  </div>
+</section>
+
+<section class="s blanc" id="aides">
+  <div class="wrap">
+    <div class="aides">
+      <div style="position:relative;z-index:1">
+        <span class="sur-titre" style="color:#8ee3bd">Aides à la rénovation</span>
+        <h2 class="titre">Des aides peuvent réduire le coût de vos travaux</h2>
+        <p>Selon votre situation et les travaux réalisés, plusieurs dispositifs publics existent. Les professionnels peuvent vous indiquer ceux auxquels votre projet pourrait ouvrir droit.</p>
+        <a class="btn-cta" href="#formulaire" data-cta style="margin-top:10px">Démarrer ma demande <svg class="i"><use href="#i-fleche"/></svg></a>
+        <p class="note">Montants et conditions selon vos revenus, votre logement et les travaux. Information officielle : <a href="https://france-renov.gouv.fr" target="_blank" rel="noopener">france-renov.gouv.fr</a>. <span class="nom-marque">RenovRenta</span> est un service privé, non affilié à l'État.</p>
+      </div>
+      <div class="liste">
+        <div><b>MaPrimeRénov'</b><span>Aide de l'État pour la rénovation énergétique, sous conditions.</span></div>
+        <div><b>Primes CEE</b><span>Primes des fournisseurs d'énergie pour certains travaux d'économie d'énergie.</span></div>
+        <div><b>Éco-prêt à taux zéro</b><span>Prêt sans intérêts pour financer des travaux de rénovation énergétique.</span></div>
+        <div><b>TVA à taux réduit</b><span>5,5 % ou 10 % sur certains travaux dans les logements de plus de 2 ans.</span></div>
+      </div>
     </div>
   </div>
-  <div class="container footer-bottom">
-    <p>&copy; <span id="year"></span> LeadRénov'. Tous droits réservés.</p>
-    <p>Mentions légales · CGV · Politique de confidentialité</p>
+</section>
+
+<section class="s">
+  <div class="wrap">
+    <div class="centre">
+      <span class="sur-titre">Pourquoi passer par nous</span>
+      <h2 class="titre">Gagnez du temps, gardez le contrôle</h2>
+      <p class="intro">Un intermédiaire simple entre vous et les professionnels du bâtiment de votre région.</p>
+    </div>
+    <div class="pq">
+      <div><span class="ic"><svg class="i"><use href="#i-temps"/></svg></span><h3>Un seul formulaire</h3><p>Vous décrivez votre projet une fois. Ce sont les professionnels qui vous contactent, pas l'inverse.</p></div>
+      <div><span class="ic"><svg class="i"><use href="#i-balance"/></svg></span><h3>Comparez les offres</h3><p>Plusieurs devis pour le même projet : de quoi comparer les prix, les solutions proposées et les délais.</p></div>
+      <div><span class="ic"><svg class="i"><use href="#i-lock"/></svg></span><h3>Vos données respectées</h3><p><span class="nb-pros">3</span> professionnels au maximum, uniquement pour votre projet. Aucune revente à d'autres fins.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s blanc" id="faq">
+  <div class="wrap">
+    <div class="centre">
+      <span class="sur-titre">Questions fréquentes</span>
+      <h2 class="titre">Vous vous posez des questions ?</h2>
+      <p class="intro">Tout ce qu'il faut savoir avant de faire votre demande.</p>
+    </div>
+    <div class="faq">
+      <details><summary>Le service est-il vraiment gratuit ?</summary><p>Oui. Votre demande est gratuite et sans engagement. <span class="nom-marque">RenovRenta</span> est rémunéré par les professionnels partenaires, qui paient pour être mis en relation avec des particuliers ayant un projet.</p></details>
+      <details><summary>Combien de professionnels vont me contacter ?</summary><p><span class="nb-pros">3</span> au maximum, choisis selon votre type de travaux et votre localisation.</p></details>
+      <details><summary>Suis-je obligé d'accepter un devis ?</summary><p>Non. Vous êtes libre de comparer, de poser vos questions et de ne donner suite à aucune proposition.</p></details>
+      <details><summary>Sous quel délai serai-je recontacté ?</summary><p>En général sous 48 heures ouvrées. Nous pouvons d'abord vous appeler pour préciser votre besoin.</p></details>
+      <details><summary>Est-ce un organisme public ?</summary><p>Non. <span class="nom-marque">RenovRenta</span> est un service privé et indépendant de mise en relation, non affilié à l'État, à France Rénov' ni à l'Anah. Pour les informations officielles sur les aides : france-renov.gouv.fr.</p></details>
+      <details><summary>Que deviennent mes données ?</summary><p>Elles servent uniquement à traiter votre demande et à la transmettre aux professionnels retenus. Vous pouvez demander leur suppression à tout moment. <button type="button" data-ouvrir="dlg-confidentialite" style="background:none;border:0;padding:0;color:var(--vert);text-decoration:underline;font:inherit;cursor:pointer">Politique de confidentialité</button></p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final" id="final">
+  <div class="wrap">
+    <h2 class="titre">Prêt à lancer vos travaux ?</h2>
+    <p>2 minutes pour décrire votre projet. Des professionnels de votre région vous rappellent.</p>
+    <a class="btn-cta" href="#formulaire" data-cta>Recevoir mes devis gratuits <svg class="i"><use href="#i-fleche"/></svg></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="grille">
+      <div>
+        <h4 class="nom-marque">RenovRenta</h4>
+        <p style="margin:0;max-width:360px">Service privé et indépendant de mise en relation entre particuliers et professionnels de la rénovation. Non affilié à l'État ni à France Rénov'.</p>
+      </div>
+      <div>
+        <h4>Travaux</h4>
+        <a href="?travaux=isolation#formulaire">Isolation</a>
+        <a href="?travaux=pompe-a-chaleur#formulaire">Pompe à chaleur</a>
+        <a href="?travaux=solaire#formulaire">Panneaux solaires</a>
+        <a href="?travaux=fenetres#formulaire">Fenêtres</a>
+      </div>
+      <div>
+        <h4>Informations</h4>
+        <button class="lien" data-ouvrir="dlg-mentions">Mentions légales</button>
+        <button class="lien" data-ouvrir="dlg-confidentialite">Politique de confidentialité</button>
+        <a href="#faq">Questions fréquentes</a>
+        <button class="lien" id="gerer-cookies" type="button">Gérer les cookies</button>
+      </div>
+    </div>
+    <div class="bas">© <span id="annee"></span> <span class="nom-marque">RenovRenta</span> · Photos : Unsplash</div>
   </div>
 </footer>
 
-<script src="js/config.js"></script>
-<script src="js/script.js"></script>
+<div class="cookies" id="cookies" role="dialog" aria-label="Cookies">
+  <b>Mesure de nos publicités</b>
+  Avec votre accord, nous utilisons des cookies Google pour savoir quelles publicités amènent des demandes. Aucun cookie n'est déposé si vous refusez, et le site fonctionne normalement. <button type="button" data-ouvrir="dlg-confidentialite" style="background:none;border:0;padding:0;color:var(--vert);text-decoration:underline;font:inherit;cursor:pointer">En savoir plus</button>
+  <div class="bt"><button type="button" class="refus" id="ck-refus">Tout refuser</button><button type="button" class="ok" id="ck-ok">Accepter</button></div>
+</div>
+
+<div class="barre-mobile" id="barre-mobile"><a class="btn-cta" href="#formulaire" data-cta>Recevoir mes devis gratuits</a></div>
+
+<dialog id="dlg-mentions">
+  <div class="contenu">
+    <h2>Mentions légales</h2>
+    <h3>Éditeur du site</h3>
+    <p><span data-legal="societe"></span><br>
+    Siège : <span data-legal="adresse"></span><br>
+    Email : <a data-email href="#"></a><span data-si-tel hidden> – Téléphone : <span data-legal="telephone"></span></span><br>
+    Directeur de la publication : <span data-legal="dirigeant"></span></p>
+    <h3>Hébergement</h3>
+    <p><span data-legal="hebergeur"></span>.<br>
+    Les demandes envoyées via le formulaire sont enregistrées dans un tableur Google Sheets (Google Ireland Ltd, Gordon House, Barrow Street, Dublin 4, Irlande).</p>
+    <h3>Activité</h3>
+    <p><span class="nom-marque">RenovRenta</span> est un service de mise en relation entre particuliers ayant un projet de travaux et professionnels du bâtiment. Il ne réalise pas de travaux et n'est pas partie aux contrats conclus entre les particuliers et les professionnels. Le service est rémunéré par les professionnels partenaires.</p>
+    <h3>Crédits</h3>
+    <p>Photographies : Unsplash (licence Unsplash).</p>
+  </div>
+  <div class="fermer"><button class="btn btn-go" style="flex:none;padding:11px 20px" data-fermer>Fermer</button></div>
+</dialog>
+
+<dialog id="dlg-confidentialite">
+  <div class="contenu">
+    <h2>Politique de confidentialité</h2>
+    <h3>Responsable du traitement</h3>
+    <p><span data-legal="societe"></span> – <span data-legal="adresse"></span> – <a data-email href="#"></a>.</p>
+    <h3>Données collectées</h3>
+    <p>Prénom, nom, téléphone, email, code postal, ville, type de travaux, caractéristiques du logement, délai, budget et description du projet, ainsi que la date de votre accord et l'origine de votre visite.</p>
+    <h3>Pourquoi ?</h3>
+    <p>Pour traiter votre demande, vous recontacter si besoin afin de la préciser, et la transmettre à des professionnels du bâtiment susceptibles de réaliser vos travaux. Base légale : votre consentement, donné en cochant la case du formulaire.</p>
+    <h3>Qui reçoit vos données ?</h3>
+    <p><span class="nb-pros">3</span> professionnels du bâtiment au maximum (artisans et entreprises de rénovation) intervenant dans votre zone et pour le type de travaux demandé. Vos données ne sont pas vendues à d'autres fins ni utilisées pour d'autres offres commerciales.</p>
+    <p>Prestataires techniques : Google (stockage du tableur ; clauses contractuelles types de la Commission européenne pour les éventuels transferts hors UE) et GitHub (hébergement du site).</p>
+    <h3>Combien de temps ?</h3>
+    <p>3 ans au maximum à compter de notre dernier échange, puis suppression.</p>
+    <h3>Vos droits</h3>
+    <p>Vous pouvez à tout moment retirer votre accord, accéder à vos données, les rectifier, les faire supprimer ou vous opposer à leur utilisation en écrivant à <a data-email href="#"></a>. Vous pouvez aussi saisir la CNIL (cnil.fr).</p>
+    <h3>Cookies</h3>
+    <p>Si vous l'acceptez via le bandeau, le site utilise les cookies de Google Ads / Google Analytics (Google Ireland Ltd) pour mesurer l'efficacité de nos publicités, pendant 13 mois au maximum. Si vous refusez, aucun cookie de mesure n'est déposé. Vous pouvez changer d'avis à tout moment via le lien « Gérer les cookies » en bas de page.</p>
+  </div>
+  <div class="fermer"><button class="btn btn-go" style="flex:none;padding:11px 20px" data-fermer>Fermer</button></div>
+</dialog>
+
+<script src="config.js"></script>
+<script src="ux.js"></script>
+<script>
+/* Réglages : voir config.js */
+const CFG = window.RENOVRENTA || {};
+const SCRIPT_URL = CFG.SCRIPT_URL || '';
+const NB_PROS = CFG.NB_PROS || 3;
+const NOM_MARQUE = CFG.NOM_MARQUE || "RenovRenta";
+const GOOGLE_ADS_ID = CFG.GOOGLE_ADS_ID || '';
+const GOOGLE_ADS_CONVERSION = CFG.GOOGLE_ADS_CONVERSION || '';
+const GA4_ID = CFG.GA4_ID || '';
+
+const PH = (id, w) => `url('https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=65')`;
+// clé ?travaux= | libellé | icône | photo | texte | titre
+const TRAVAUX = [
+  ['isolation', 'Isolation', 'isolation', 'photo-1517581177682-a085bb7ffb15', 'Combles, murs, planchers : moins de pertes de chaleur.', 'Isolation de votre logement'],
+  ['pompe-a-chaleur', 'Pompe à chaleur / chauffage', 'pac', 'photo-1600596542815-ffad4c1539a9', 'Remplacer une vieille chaudière par un chauffage plus économe.', 'Pompe à chaleur'],
+  ['solaire', 'Panneaux solaires', 'solaire', 'flagged/photo-1566838616838-c3a720672aad', 'Produire une partie de votre électricité.', 'Panneaux solaires'],
+  ['fenetres', 'Fenêtres / menuiseries', 'fenetre', 'photo-1554995207-c18c203602cb', 'Double vitrage, portes, volets.', 'Fenêtres et menuiseries'],
+  ['toiture', 'Toiture', 'toiture', 'photo-1482731215275-a1f151646268', 'Réfection, couverture, isolation de toiture.', 'Rénovation de toiture'],
+  ['salle-de-bain', 'Salle de bain / cuisine', 'sdb', 'photo-1618832515490-e181c4794a45', 'Rénovation de pièce d\'eau ou de cuisine.', 'Salle de bain et cuisine'],
+  ['renovation', 'Rénovation complète', 'complete', 'photo-1634586648651-f1fb9ec10d90', 'Plusieurs travaux à coordonner.', 'Rénovation complète'],
+  ['autre', 'Autre', 'autre', 'photo-1599619585752-c3edb42a414c', 'Peinture, électricité, plomberie…', '']
+];
+
+document.getElementById('hero').style.setProperty('--photo', PH('flagged/photo-1566838616631-f2618f74a6a2', 1800));
+document.getElementById('photo-comment').style.setProperty('--photo', PH('photo-1505798577917-a65157d3320a', 1100));
+document.getElementById('final').style.setProperty('--photo', PH('photo-1580587771525-78b9dba3b914', 1600));
+document.querySelectorAll('.nb-pros').forEach(e => e.textContent = NB_PROS);
+document.querySelectorAll('.nom-marque').forEach(e => e.textContent = NOM_MARQUE);
+document.getElementById('annee').textContent = new Date().getFullYear();
+const modeDemo = !/^https:\/\/script\.google\.com\//.test(SCRIPT_URL);
+if (modeDemo) document.getElementById('bandeau-demo').style.display = 'block';
+
+const ico = n => `<svg class="i"><use href="#i-${n}"/></svg>`;
+const tuiles = document.getElementById('tuiles-travaux');
+const cartes = document.getElementById('cartes-travaux');
+TRAVAUX.forEach(([cle, nom, ic, photo, txt], i) => {
+  tuiles.insertAdjacentHTML('beforeend',
+    `<div class="tuile"><input type="radio" name="type_travaux" id="tt${i}" value="${nom}"><label for="tt${i}"><span class="ico">${ico(ic)}</span>${nom}</label></div>`);
+  cartes.insertAdjacentHTML('beforeend',
+    `<button type="button" class="ct" data-choisir="${i}"><div class="im" style="--photo:${PH(photo, 700)}"><span class="ico">${ico(ic)}</span></div><div class="bd"><h3>${nom}</h3><p>${txt}</p><span class="go">Demander un devis →</span></div></button>`);
+});
+
+const form = document.getElementById('form-lead');
+const carte = document.getElementById('formulaire');
+const etapes = [...form.querySelectorAll('.etape')];
+const infos = ['', 'Étape 1/4', 'Étape 2/4', 'Étape 3/4', 'Dernière étape', 'Envoyé ✓'];
+let courante = 1;
+
+function afficher(n, defiler) {
+  courante = n;
+  etapes.forEach(e => { e.classList.remove('sans-anim'); e.classList.toggle('active', Number(e.dataset.etape) === n); });
+  document.getElementById('barre').style.width = (n >= 5 ? 100 : n * 25) + '%';
+  document.getElementById('etape-info').textContent = infos[n];
+  if (n === 4) majRecap();
+  if (defiler !== false && carte.getBoundingClientRect().top < 0) carte.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+const val = n => {
+  const el = form.elements[n];
+  if (!el) return '';
+  if (el instanceof RadioNodeList) return el.value;
+  if (el.type === 'checkbox') return el.checked ? el.value : '';
+  return el.value.trim();
+};
+const telNorm = t => t.replace(/[\s.\-()]/g, '').replace(/^\+33/, '0').replace(/^0033/, '0');
+const regles = {
+  type_logement: v => !!v, statut_occupant: v => !!v, delai: v => !!v,
+  code_postal: v => /^\d{5}$/.test(v), ville: v => v.length >= 2,
+  prenom: v => v.length >= 1, nom: v => v.length >= 1,
+  telephone: v => /^0[1-9]\d{8}$/.test(telNorm(v)),
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v), consentement: v => v === 'oui'
+};
+function valider(n) {
+  let premier = null;
+  form.querySelectorAll(`.etape[data-etape="${n}"] [data-requis]`).forEach(b => {
+    const ok = regles[b.dataset.requis](val(b.dataset.requis));
+    b.classList.toggle('invalide', !ok);
+    if (!ok && !premier) premier = b;
+  });
+  if (premier) premier.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  return !premier;
+}
+function majRecap() {
+  document.getElementById('recap').innerHTML = [val('type_travaux'), val('type_logement'), [val('code_postal'), val('ville')].filter(Boolean).join(' ')]
+    .filter(Boolean).map(t => `<span>${t.replace(/</g, '&lt;')}</span>`).join('');
+}
+
+tuiles.addEventListener('change', () => setTimeout(() => afficher(2), 200));
+form.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.matches('[data-suivant]') && valider(courante)) afficher(courante + 1);
+  if (b.matches('[data-retour]')) afficher(courante - 1);
+});
+['input', 'change'].forEach(ev => form.addEventListener(ev, e => {
+  const b = e.target.closest('[data-requis]');
+  if (b && b.classList.contains('invalide') && regles[b.dataset.requis](val(b.dataset.requis))) b.classList.remove('invalide');
+}));
+
+function choisirTravaux(i, defiler) {
+  const r = document.getElementById('tt' + i); if (!r) return;
+  r.checked = true;
+  const t = TRAVAUX[i];
+  if (t[5]) {
+    document.getElementById('titre-hero').innerHTML = `${t[5]}&nbsp;:<br><span>comparez jusqu'à ${NB_PROS} devis gratuits.</span>`;
+    document.getElementById('carte-titre').textContent = t[5];
+  }
+  afficher(2, false);
+  if (defiler) carte.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+cartes.addEventListener('click', e => { const c = e.target.closest('[data-choisir]'); if (c) choisirTravaux(Number(c.dataset.choisir), true); });
+// Lien direct pour les publicités : ?travaux=isolation | pompe-a-chaleur | solaire | fenetres | toiture | salle-de-bain | renovation
+const params = new URLSearchParams(location.search);
+const pre = TRAVAUX.findIndex(t => t[0] === (params.get('travaux') || '').toLowerCase());
+if (pre >= 0) choisirTravaux(pre, false);
+
+// Ville automatique à partir du code postal (service public geo.api.gouv.fr)
+const cpInput = document.getElementById('code_postal'), villeInput = document.getElementById('ville');
+cpInput.addEventListener('input', async () => {
+  cpInput.value = cpInput.value.replace(/\D/g, '').slice(0, 5);
+  if (cpInput.value.length !== 5) return;
+  try {
+    const r = await fetch(`https://geo.api.gouv.fr/communes?codePostal=${cpInput.value}&fields=nom&format=json`);
+    const villes = (await r.json()).map(v => v.nom);
+    document.getElementById('villes').innerHTML = villes.map(v => `<option value="${v}">`).join('');
+    if (villes.length && (!villeInput.value || villes.length === 1)) villeInput.value = villes[0];
+    villeInput.closest('[data-requis]').classList.remove('invalide');
+  } catch (e) { /* saisie manuelle */ }
+});
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!valider(4)) return;
+  const btn = document.getElementById('btn-envoyer'), errEnvoi = document.getElementById('err-envoi');
+  const reset = () => { btn.disabled = false; btn.textContent = 'Recevoir mes devis gratuits'; };
+  btn.disabled = true; btn.textContent = 'Envoi en cours…'; errEnvoi.style.display = 'none';
+  const p = new URLSearchParams();
+  ['type_travaux', 'type_logement', 'statut_occupant', 'surface', 'delai', 'budget', 'code_postal', 'ville', 'description',
+    'prenom', 'nom', 'telephone', 'email', 'consentement', 'website'].forEach(n => p.append(n, val(n)));
+  p.append('source', [params.get('utm_source'), params.get('utm_campaign')].filter(Boolean).join(' / ')
+    || (document.referrer ? document.referrer.replace(/^https?:\/\//, '').split('/')[0] : '') || 'direct');
+  try {
+    if (modeDemo && location.protocol !== 'file:') {
+      errEnvoi.textContent = 'Le formulaire ouvre très prochainement. Merci de revenir un peu plus tard.';
+      errEnvoi.style.display = 'block'; reset(); return;
+    }
+    if (modeDemo) { console.warn('Mode démo – données non envoyées :', Object.fromEntries(p)); await new Promise(r => setTimeout(r, 600)); }
+    else await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: p });
+    document.getElementById('merci-prenom').textContent = val('prenom');
+    afficher(5);
+    barre.classList.remove('on');
+    suivreConversion();
+    if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+  } catch (err) {
+    errEnvoi.textContent = "L'envoi n'a pas fonctionné. Vérifiez votre connexion et réessayez.";
+    errEnvoi.style.display = 'block'; reset();
+  }
+});
+
+// ===== Google (chargé uniquement après accord aux cookies) =====
+const TAGS = [GOOGLE_ADS_ID, GA4_ID].filter(Boolean);
+const lireChoix = () => { try { return localStorage.getItem('rr_cookies'); } catch (e) { return null; } };
+const ecrireChoix = v => { try { localStorage.setItem('rr_cookies', v); } catch (e) { } };
+let googleCharge = false;
+function chargerGoogle() {
+  if (googleCharge || !TAGS.length) return;
+  googleCharge = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date());
+  TAGS.forEach(id => gtag('config', id));
+  const sc = document.createElement('script');
+  sc.async = true; sc.src = 'https://www.googletagmanager.com/gtag/js?id=' + TAGS[0];
+  document.head.appendChild(sc);
+}
+const bandeau = document.getElementById('cookies');
+if (TAGS.length) {
+  const choix = lireChoix();
+  if (choix === 'oui') chargerGoogle(); else if (!choix) bandeau.classList.add('on');
+}
+document.getElementById('ck-ok').onclick = () => { ecrireChoix('oui'); bandeau.classList.remove('on'); chargerGoogle(); };
+document.getElementById('ck-refus').onclick = () => { ecrireChoix('non'); bandeau.classList.remove('on'); };
+document.getElementById('gerer-cookies').onclick = () => {
+  if (!TAGS.length) { alert('Ce site ne dépose actuellement aucun cookie de mesure.'); return; }
+  if (lireChoix() === 'oui') { ecrireChoix('non'); alert('Cookies de mesure désactivés. Ils ne seront plus utilisés à partir de la prochaine page.'); }
+  else bandeau.classList.add('on');
+};
+function suivreConversion() {
+  if (typeof window.gtag !== 'function') return;
+  if (GOOGLE_ADS_ID && GOOGLE_ADS_CONVERSION) gtag('event', 'conversion', { send_to: GOOGLE_ADS_ID + '/' + GOOGLE_ADS_CONVERSION });
+  gtag('event', 'generate_lead', { travaux: val('type_travaux') });
+}
+
+// Bouton fixe en bas sur mobile quand le formulaire n'est plus visible
+const barre = document.getElementById('barre-mobile');
+function majBarre() {
+  const r = carte.getBoundingClientRect();
+  barre.classList.toggle('on', (r.bottom < 60 || r.top > innerHeight) && courante < 5);
+}
+addEventListener('scroll', majBarre, { passive: true }); addEventListener('resize', majBarre); majBarre();
+document.querySelectorAll('[data-cta]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); carte.scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-ouvrir]');
+  if (o) { e.preventDefault(); document.getElementById(o.dataset.ouvrir).showModal(); }
+  if (e.target.matches('[data-fermer]')) e.target.closest('dialog').close();
+});
+document.querySelectorAll('dialog').forEach(d => d.addEventListener('click', e => { if (e.target === d) d.close(); }));
+</script>
 </body>
 </html>

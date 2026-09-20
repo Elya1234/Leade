@@ -1,0 +1,133 @@
+/* RenovRenta — animations et finitions (partagé par index.html et artisans.html) */
+
+/* Logo */
+.nom-marque .rr-a{color:var(--vert-fonce)}
+.nom-marque .rr-b{color:var(--orange);font-weight:800}
+footer .nom-marque .rr-a,.hero .nom-marque .rr-a{color:inherit}
+.logo svg{transition:transform .5s cubic-bezier(.3,1.6,.5,1)}
+.logo:hover svg{transform:rotate(-8deg) scale(1.08)}
+
+/* Barre de progression de lecture */
+.rr-prog{position:fixed;top:0;left:0;right:0;height:3px;z-index:100;background:linear-gradient(90deg,#4ade80,#1f7a5a 50%,#f59e0b);transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
+
+/* En-tête qui se resserre au défilement */
+header.top{transition:box-shadow .3s,background .3s}
+header.top .wrap{transition:height .3s}
+header.top.rr-scrolled{box-shadow:0 10px 30px -18px rgba(15,61,46,.45)}
+@media (min-width:1021px){header.top.rr-scrolled .wrap{height:58px}}
+
+/* Apparition au défilement */
+.rr-js .rv{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.2,.7,.2,1),transform .75s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s);will-change:opacity,transform}
+.rr-js .rv.rv-g{transform:translateX(-26px)}
+.rr-js .rv.rv-d{transform:translateX(26px)}
+.rr-js .rv.rv-z{transform:scale(.94)}
+.rr-js .rv.vu{opacity:1;transform:none}
+
+/* Hero : entrée, halos animés, titre brillant */
+.hero{isolation:isolate;position:relative;overflow:hidden}
+.rr-halo{position:absolute;border-radius:50%;filter:blur(70px);opacity:.45;z-index:0;pointer-events:none;animation:rr-flotte 16s ease-in-out infinite alternate}
+.rr-halo.h1{width:420px;height:420px;background:#34b27f;top:-120px;left:-80px}
+.rr-halo.h2{width:360px;height:360px;background:#f59e0b;opacity:.22;bottom:-140px;right:18%;animation-duration:20s;animation-delay:-6s}
+.rr-halo.h3{width:300px;height:300px;background:#4ade80;opacity:.25;top:30%;right:-60px;animation-duration:18s;animation-delay:-3s}
+@keyframes rr-flotte{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.12)}100%{transform:translate(-30px,20px) scale(.95)}}
+.hero .wrap{position:relative;z-index:1}
+.rr-js .hero .wrap>div:first-child>*{opacity:0;animation:rr-monte .8s cubic-bezier(.2,.7,.2,1) forwards}
+.rr-js .hero .wrap>div:first-child>*:nth-child(1){animation-delay:.05s}
+.rr-js .hero .wrap>div:first-child>*:nth-child(2){animation-delay:.15s}
+.rr-js .hero .wrap>div:first-child>*:nth-child(3){animation-delay:.28s}
+.rr-js .hero .wrap>div:first-child>*:nth-child(4){animation-delay:.4s}
+.rr-js .hero .wrap>div:first-child>*:nth-child(5){animation-delay:.5s}
+@keyframes rr-monte{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.hero h1>span,.hero h1 span.rr-brille{background:linear-gradient(90deg,#8ee3bd,#4ade80 30%,#fcd34d 50%,#4ade80 70%,#8ee3bd);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:rr-brille 7s linear infinite}
+.hero h1>span .nb-pros{color:inherit}
+@keyframes rr-brille{from{background-position:0 0}to{background-position:-250% 0}}
+.pastille .pt{animation:rr-pouls 2s ease-out infinite}
+@keyframes rr-pouls{0%{box-shadow:0 0 0 0 rgba(74,222,128,.6)}100%{box-shadow:0 0 0 12px rgba(74,222,128,0)}}
+
+/* Carte formulaire : entrée + pastilles flottantes */
+.rr-zone{position:relative}
+.rr-js .rr-zone .carte{animation:rr-carte .9s .25s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rr-carte{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:none}}
+.rr-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:8px;background:#fff;color:var(--texte);border-radius:14px;padding:10px 14px;font-size:.82rem;font-weight:700;box-shadow:0 14px 34px -10px rgba(0,0,0,.35);animation:rr-flotte-chip 5s ease-in-out infinite;white-space:nowrap}
+.rr-chip i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;background:var(--menthe);color:var(--vert)}
+.rr-chip.c1{left:-44px;bottom:-24px}
+.rr-chip.c2{right:-26px;top:-32px;animation-delay:-2.5s}
+@keyframes rr-flotte-chip{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (max-width:1180px){.rr-chip{display:none}}
+
+/* Tuiles et pastilles : sélection animée */
+.tuile label{position:relative}
+.tuile label::after{content:"";position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--vert) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/14px no-repeat;transform:scale(0);transition:transform .35s cubic-bezier(.3,1.7,.5,1)}
+.tuile input:checked+label::after{transform:scale(1)}
+.tuile input:checked+label,.pill input:checked+label{animation:rr-pop .35s ease}
+@keyframes rr-pop{0%{transform:scale(1)}40%{transform:scale(.95)}100%{transform:scale(1)}}
+.tuile label .ico{transition:transform .35s cubic-bezier(.3,1.6,.5,1),background .2s,color .2s}
+.tuile label:hover .ico{transform:rotate(-6deg) scale(1.08)}
+.pill label{transition:background .2s,border-color .2s,color .2s,transform .15s}
+.pill label:active{transform:scale(.96)}
+
+/* Champs : validation en direct */
+.champ.rr-ok input{border-color:#34b27f;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334b27f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px;padding-right:38px}
+.invalide input,.invalide .pills{animation:rr-secoue .4s ease}
+@keyframes rr-secoue{0%,100%{transform:none}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+
+/* Barre de progression du formulaire : reflet */
+.progress span{position:relative;overflow:hidden}
+.progress span::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);transform:translateX(-100%);animation:rr-reflet 2.2s ease-in-out infinite}
+@keyframes rr-reflet{to{transform:translateX(100%)}}
+
+/* Boutons : reflet au survol, flèche qui avance, pulsation */
+.btn-cta,.btn-go{position:relative;overflow:hidden;isolation:isolate}
+.btn-cta::before,.btn-go::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);z-index:-1;transition:left .6s ease}
+.btn-cta:hover::before,.btn-go:hover::before{left:130%}
+.btn-cta svg,.btn-go svg{transition:transform .25s}
+.btn-cta:hover svg,.btn-go:hover svg{transform:translateX(4px)}
+.btn-cta:active,.btn-go:active{transform:scale(.98)}
+.final .btn-cta,.barre-mobile .btn-cta{animation:rr-appel 2.6s ease-out infinite}
+@keyframes rr-appel{0%{box-shadow:0 0 0 0 rgba(245,158,11,.55)}70%,100%{box-shadow:0 0 0 16px rgba(245,158,11,0)}}
+
+/* Ruban défilant des travaux */
+.rr-ruban{background:var(--vert-fonce);color:#cfe8dc;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,255,255,.08);padding:13px 0;font-weight:700;font-size:.92rem;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rr-ruban .piste{display:inline-flex;gap:40px;animation:rr-defile 32s linear infinite;padding-left:40px}
+.rr-ruban span{display:inline-flex;align-items:center;gap:40px}
+.rr-ruban span::after{content:"✦";color:var(--orange)}
+.rr-ruban:hover .piste{animation-play-state:paused}
+@keyframes rr-defile{to{transform:translateX(-50%)}}
+
+/* Cartes : survol vivant */
+.ct,.pq>div,.etapes .e,.etapes>div,.prix>div,.liste-ok>div,.confiance .wrap>div{transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .35s}
+.pq>div:hover,.etapes .e:hover,.etapes>div:hover,.prix>div:hover,.liste-ok>div:hover{transform:translateY(-4px);box-shadow:var(--ombre);border-color:var(--menthe-2)}
+.ct .im{transition:filter .4s}
+.ct:hover .im{filter:saturate(1.2) brightness(1.06)}
+.ct .im .ico,.pq .ic,.confiance .ic,.liste-ok .ic{transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.ct:hover .im .ico,.pq>div:hover .ic,.confiance .wrap>div:hover .ic,.liste-ok>div:hover .ic{transform:translateY(-4px) rotate(-6deg)}
+.ct .go{display:inline-block;transition:transform .25s}
+.ct:hover .go{transform:translateX(5px)}
+.photo{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.photo:hover{transform:scale(1.015)}
+.photo .badge{animation:rr-flotte-chip 5s ease-in-out infinite}
+
+/* FAQ : ouverture douce */
+.faq details[open] p{animation:rr-deroule .4s ease}
+@keyframes rr-deroule{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.faq summary{transition:color .2s}
+.faq summary:hover{color:var(--vert)}
+
+/* Écran de remerciement : coche dessinée + confettis */
+.merci .rond,.ok .rond{position:relative;animation:rr-rond .6s cubic-bezier(.3,1.6,.5,1) both}
+@keyframes rr-rond{from{transform:scale(0)}to{transform:scale(1)}}
+.merci .rond svg path,.ok .rond svg path{stroke-dasharray:24;stroke-dashoffset:24;animation:rr-trace .5s .35s ease forwards}
+@keyframes rr-trace{to{stroke-dashoffset:0}}
+.rr-confetti{position:absolute;left:50%;top:50%;width:8px;height:12px;border-radius:2px;pointer-events:none;animation:rr-confetti 1.1s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rr-confetti{0%{transform:translate(-50%,-50%) rotate(0);opacity:1}100%{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) rotate(var(--r));opacity:0}}
+.merci ol li{opacity:0;animation:rr-monte .5s ease forwards}
+.merci ol li:nth-child(1){animation-delay:.5s}.merci ol li:nth-child(2){animation-delay:.65s}.merci ol li:nth-child(3){animation-delay:.8s}
+
+/* Compteurs */
+.rr-compte{font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rr-js .rv,.rr-js .hero .wrap>div:first-child>*,.merci ol li{opacity:1!important;transform:none!important}
+  .rr-halo{display:none}
+}

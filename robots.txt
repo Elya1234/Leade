@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://elya1234.github.io/Leade/sitemap.xml
